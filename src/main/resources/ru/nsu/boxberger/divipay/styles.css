@@ -1,0 +1,18 @@
+.rounded-border {
+    -fx-background-radius: 30; /* Радиус закруглений */
+    -fx-border-radius: 30; /* Радиус закруглений */
+    -fx-background-color: lightgray; /* Цвет фона */
+    -fx-border-color: gray; /* Цвет границы */
+}
+.rounded-window {
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: lightgray;
+    -fx-border-color: gray;
+}
+.my-rounded {
+    -fx-background-radius: 6;
+    -fx-background-color: rgb(45, 45, 50), rgb(60, 60, 65);
+    -fx-background-insets: 0, 0 1 1 0;
+
+}
