@@ -1,24 +1,24 @@
-package ru.nsu.boxberger.divipay;
+package ru.nsu.boxberger.divipay.mainpage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import ru.nsu.boxberger.divipay.MainApp;
+import ru.nsu.boxberger.divipay.about.AboutController;
+import ru.nsu.boxberger.divipay.contacts.ContactsController;
+import ru.nsu.boxberger.divipay.profile.ProfileController;
+import ru.nsu.boxberger.divipay.purchases.PurchasesController;
+import ru.nsu.boxberger.divipay.requests.RequestsController;
 
 import java.io.IOException;
 
-public class MainWindowController {
+public class MainPageController {
     @FXML
     private Label aboutButton;
-
-    @FXML
-    private void aboutButtonClick (ActionEvent event) throws IOException {
-        goToAbout();
-    }
 
     @FXML
     private Label contactsButton;
@@ -47,7 +47,7 @@ public class MainWindowController {
     }
     @FXML
     private void goToProfile() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/profile.fxml"));
         Parent root = fxmlLoader.load();
         ProfileController controller = fxmlLoader.getController();
 
@@ -59,7 +59,7 @@ public class MainWindowController {
 
     @FXML
     private void goToRequests() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("requests.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/requests.fxml"));
         Parent root = fxmlLoader.load();
         RequestsController controller = fxmlLoader.getController();
 
@@ -71,7 +71,7 @@ public class MainWindowController {
 
     @FXML
     private void goToPurchases() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("purchases.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/purchases.fxml"));
         Parent root = fxmlLoader.load();
         PurchasesController controller = fxmlLoader.getController();
 
@@ -83,7 +83,7 @@ public class MainWindowController {
 
     @FXML
     private void goToContacts() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("contacts.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/contacts.fxml"));
         Parent root = fxmlLoader.load();
         ContactsController controller = fxmlLoader.getController();
 
@@ -95,7 +95,7 @@ public class MainWindowController {
 
     @FXML
     private void goToAbout() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("about.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/about.fxml"));
         Parent root = fxmlLoader.load();
         AboutController controller = fxmlLoader.getController();
 

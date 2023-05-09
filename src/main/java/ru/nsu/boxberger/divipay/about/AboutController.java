@@ -1,4 +1,4 @@
-package ru.nsu.boxberger.divipay;
+package ru.nsu.boxberger.divipay.about;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,8 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import ru.nsu.boxberger.divipay.MainApp;
+import ru.nsu.boxberger.divipay.contacts.ContactsController;
+import ru.nsu.boxberger.divipay.purchases.*;
+import ru.nsu.boxberger.divipay.mainpage.MainPageController;
+import ru.nsu.boxberger.divipay.profile.ProfileController;
+import ru.nsu.boxberger.divipay.requests.RequestsController;
 
-public class ProfileController {
+public class AboutController {
 
     @FXML
     private ResourceBundle resources;
@@ -25,7 +31,7 @@ public class ProfileController {
     private Label contactsButton;
 
     @FXML
-    private Label mainpageButon;
+    private Label mainpageButton;
 
     @FXML
     private Label profileButton;
@@ -38,19 +44,19 @@ public class ProfileController {
 
     @FXML
     void initialize() {
-        assert aboutButton != null : "fx:id=\"aboutButton\" was not injected: check your FXML file 'profile.fxml'.";
-        assert contactsButton != null : "fx:id=\"contactsButton\" was not injected: check your FXML file 'profile.fxml'.";
-        assert mainpageButon != null : "fx:id=\"mainpageButon\" was not injected: check your FXML file 'profile.fxml'.";
-        assert profileButton != null : "fx:id=\"profileButton\" was not injected: check your FXML file 'profile.fxml'.";
-        assert purchasesButton != null : "fx:id=\"purchasesButton\" was not injected: check your FXML file 'profile.fxml'.";
-        assert requestsButton != null : "fx:id=\"requestsButton\" was not injected: check your FXML file 'profile.fxml'.";
+        assert aboutButton != null : "fx:id=\"aboutButton\" was not injected: check your FXML file 'about.fxml'.";
+        assert contactsButton != null : "fx:id=\"contactsButton\" was not injected: check your FXML file 'about.fxml'.";
+        assert mainpageButton != null : "fx:id=\"mainpageButton\" was not injected: check your FXML file 'about.fxml'.";
+        assert profileButton != null : "fx:id=\"profileButton\" was not injected: check your FXML file 'about.fxml'.";
+        assert purchasesButton != null : "fx:id=\"purchasesButton\" was not injected: check your FXML file 'about.fxml'.";
+        assert requestsButton != null : "fx:id=\"requestsButton\" was not injected: check your FXML file 'about.fxml'.";
 
     }
     @FXML
     private void goToMainPage() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainpage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/mainpage.fxml"));
         Parent root = fxmlLoader.load();
-        MainWindowController controller = fxmlLoader.getController();
+        MainPageController controller = fxmlLoader.getController();
 
         Scene scene = new Scene(root);
         Stage stage = MainApp.getPrimaryStage();
@@ -60,7 +66,7 @@ public class ProfileController {
 
     @FXML
     private void goToRequests() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("requests.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/requests.fxml"));
         Parent root = fxmlLoader.load();
         RequestsController controller = fxmlLoader.getController();
 
@@ -72,7 +78,7 @@ public class ProfileController {
 
     @FXML
     private void goToPurchases() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("purchases.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/purchases.fxml"));
         Parent root = fxmlLoader.load();
         PurchasesController controller = fxmlLoader.getController();
 
@@ -84,7 +90,7 @@ public class ProfileController {
 
     @FXML
     private void goToContacts() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("contacts.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/contacts.fxml"));
         Parent root = fxmlLoader.load();
         ContactsController controller = fxmlLoader.getController();
 
@@ -95,10 +101,10 @@ public class ProfileController {
     }
 
     @FXML
-    private void goToAbout() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("about.fxml"));
+    private void goToProfile() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/profile.fxml"));
         Parent root = fxmlLoader.load();
-        AboutController controller = fxmlLoader.getController();
+        ProfileController controller = fxmlLoader.getController();
 
         Scene scene = new Scene(root);
         Stage stage = MainApp.getPrimaryStage();
