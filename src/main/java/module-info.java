@@ -1,8 +1,22 @@
-module com.example.divipay {
+module ru.nsu.boxberger.divipay {
+
     requires javafx.controls;
     requires javafx.fxml;
+    requires spring.boot;
+    requires spring.boot.autoconfigure;
+    requires java.rmi;
+    requires spring.context;
+    requires spring.web;
+    requires spring.webmvc;
+    requires spring.boot.starter;
+    requires spring.core;
+    requires spring.beans;
+    requires java.sql;
+    requires spring.jdbc;
+    requires spring.webflux;
+    requires reactor.core;
 
-
+//    opens ru.nsu.boxberger.divipay.server;
     opens ru.nsu.boxberger.divipay to javafx.fxml;
     exports ru.nsu.boxberger.divipay;
     exports ru.nsu.boxberger.divipay.purchases;
@@ -19,4 +33,7 @@ module com.example.divipay {
     opens ru.nsu.boxberger.divipay.profile to javafx.fxml;
     exports ru.nsu.boxberger.divipay.requests;
     opens ru.nsu.boxberger.divipay.requests to javafx.fxml;
+//    exports ru.nsu.boxberger.divipay.server;
+
+
 }

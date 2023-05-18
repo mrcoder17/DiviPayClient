@@ -65,6 +65,12 @@ public class ProfileController {
     }
 
     @FXML
+    private  void goToExitButton() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainpage.fxml"));
+
+    }
+
+    @FXML
     private void goToRequests() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/requests.fxml"));
         Parent root = fxmlLoader.load();
