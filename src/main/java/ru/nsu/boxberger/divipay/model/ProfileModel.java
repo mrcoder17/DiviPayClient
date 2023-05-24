@@ -1,4 +1,4 @@
-package ru.nsu.boxberger.divipay.profile;
+package ru.nsu.boxberger.divipay.model;
 
 import java.io.File;
 

@@ -1,13 +1,13 @@
-package ru.nsu.boxberger.divipay.login;
+package ru.nsu.boxberger.divipay.model;
 
-public class LoginModel {
+public class RegistrationModel {
     private String username;
     private String password;
 
-    public LoginModel() {
+    public RegistrationModel() {
     }
 
-    public LoginModel(String username, String password) {
+    public RegistrationModel(String username, String password) {
         this.username = username;
         this.password = password;
     }

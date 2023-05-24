@@ -1,6 +1,7 @@
-package ru.nsu.boxberger.divipay.purchases;
+package ru.nsu.boxberger.divipay.api;
 
 import org.springframework.web.reactive.function.client.WebClient;
+import ru.nsu.boxberger.divipay.model.PurchasesModel;
 
 public class PurchasesApiClient {
     private static final String PURCHASES_URL = "http://localhost:8080/purchases";

@@ -1,4 +1,4 @@
-package ru.nsu.boxberger.divipay.requests;
+package ru.nsu.boxberger.divipay.api;
 
 import org.springframework.web.reactive.function.client.WebClient;
 

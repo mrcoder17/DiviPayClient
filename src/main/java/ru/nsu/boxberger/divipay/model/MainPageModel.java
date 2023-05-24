@@ -1,11 +1,4 @@
-package ru.nsu.boxberger.divipay.mainpage;
-
-import ru.nsu.boxberger.divipay.contacts.ContactsModel;
-import ru.nsu.boxberger.divipay.profile.ProfileModel;
-import ru.nsu.boxberger.divipay.purchases.PurchasesModel;
-import ru.nsu.boxberger.divipay.requests.RequestsModel;
-
-import java.util.List;
+package ru.nsu.boxberger.divipay.model;
 
 public class MainPageModel {
     private ProfileModel profileModel;

@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="250.0" maxWidth="720.0" minHeight="250.0" minWidth="720.0" prefHeight="250.0" prefWidth="720.0" styleClass="login-background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.login.LoginController">
+<BorderPane maxHeight="250.0" maxWidth="720.0" minHeight="250.0" minWidth="720.0" prefHeight="250.0" prefWidth="720.0" styleClass="login-background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.LoginController">
    <center>
       <VBox alignment="CENTER" maxHeight="250.0" maxWidth="320.0" minHeight="250.0" minWidth="320.0" prefHeight="250.0" prefWidth="320.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField alignment="CENTER" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Введите имя пользователя" style="-fx-background-color: #221f2f;" styleClass="my-rounded" stylesheets="@styles.css" />
-            <TextField alignment="CENTER" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Введите пароль" style="-fx-background-color: #221f2f;" styleClass="my-rounded" />
+            <TextField alignment="CENTER" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Введите имя пользователя" style="-fx-background-color: #221f2f;" styleClass="my-rounded" stylesheets="@styles.css" fx:id="usernameField"/>
+            <TextField alignment="CENTER" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Введите пароль" style="-fx-background-color: #221f2f;" styleClass="my-rounded" fx:id="passwordField"/>
 <!--            <TextField alignment="CENTER" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Введите номер телефона" style="-fx-background-color: #221f2f;" styleClass="my-rounded" />-->
          </children>
          <padding>
@@ -26,7 +26,7 @@
    <right>
       <VBox alignment="CENTER" maxHeight="250.0" maxWidth="200.0" minHeight="250.0" minWidth="200.0" prefHeight="250.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button maxHeight="40.0" maxWidth="130.0" minHeight="40.0" minWidth="130.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Авторизация" textAlignment="CENTER" textFill="WHITE" />
+            <Button maxHeight="40.0" maxWidth="130.0" minHeight="40.0" minWidth="130.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Авторизация" textAlignment="CENTER" textFill="WHITE" fx:id="loginButton"/>
             <Button maxHeight="40.0" maxWidth="130.0" minHeight="40.0" minWidth="130.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Регистрация" textFill="WHITE" />
          </children>
       </VBox>

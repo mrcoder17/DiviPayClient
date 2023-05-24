@@ -15,25 +15,16 @@ module ru.nsu.boxberger.divipay {
     requires spring.jdbc;
     requires spring.webflux;
     requires reactor.core;
+    requires com.fasterxml.jackson.annotation;
 
-//    opens ru.nsu.boxberger.divipay.server;
     opens ru.nsu.boxberger.divipay to javafx.fxml;
     exports ru.nsu.boxberger.divipay;
-    exports ru.nsu.boxberger.divipay.purchases;
-    opens ru.nsu.boxberger.divipay.purchases to javafx.fxml;
-    exports ru.nsu.boxberger.divipay.about;
-    opens ru.nsu.boxberger.divipay.about to javafx.fxml;
-    exports ru.nsu.boxberger.divipay.contacts;
-    opens ru.nsu.boxberger.divipay.contacts to javafx.fxml;
-    exports ru.nsu.boxberger.divipay.login;
-    opens ru.nsu.boxberger.divipay.login to javafx.fxml;
-    exports ru.nsu.boxberger.divipay.mainpage;
-    opens ru.nsu.boxberger.divipay.mainpage to javafx.fxml;
-    exports ru.nsu.boxberger.divipay.profile;
-    opens ru.nsu.boxberger.divipay.profile to javafx.fxml;
-    exports ru.nsu.boxberger.divipay.requests;
-    opens ru.nsu.boxberger.divipay.requests to javafx.fxml;
-//    exports ru.nsu.boxberger.divipay.server;
+    exports ru.nsu.boxberger.divipay.controller;
+    opens ru.nsu.boxberger.divipay.controller to javafx.fxml;
+    exports ru.nsu.boxberger.divipay.model;
+    opens ru.nsu.boxberger.divipay.model to javafx.fxml;
+    exports ru.nsu.boxberger.divipay.api;
+    opens ru.nsu.boxberger.divipay.api to javafx.fxml;
 
 
 }
