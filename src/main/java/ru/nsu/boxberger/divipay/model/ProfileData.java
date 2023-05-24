@@ -42,6 +42,4 @@ public class ProfileData {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    // Дополнительные методы, если необходимо
 }
