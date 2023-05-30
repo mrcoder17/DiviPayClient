@@ -4,10 +4,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import ru.nsu.boxberger.divipay.model.ProfileData;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.service.ProfileService;
+import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
+import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,19 +23,21 @@ public class ProfileController extends BaseController{
     @FXML
     private Label nameLabel;
     @FXML
-    private Label emailLabel;
-    @FXML
     private Button updateButton;
     @FXML
     private ListView<String> userList;
 
+    @FXML
+    private ImageView avatarImage;
+
     private ProfileService profileService;
 
     @FXML
-    private void initialize(){
-//        loadUsernames();
-//        ProfileData profileData = profileService.getProfileData();
-//        nameLabel.setText(profileData.getName());
+    private void initialize() {
+        Image image = new Image(ServerUrls.DEFAULT_PROFILE_IMAGE_URL);
+        avatarImage.setImage(image);
+        avatarImage.setFitHeight(400);
+        avatarImage.setFitWidth(400);
     }
 
     private void loadUsernames(){
@@ -41,25 +51,26 @@ public class ProfileController extends BaseController{
 
     @FXML
     private void goToMainPage() {
-        goToPage("/ru/nsu/boxberger/divipay/mainpage/mainpage.fxml", new MainPageController());
+        goToPage(ResourcesPaths.MAINPAGE_PATH, new MainPageController());
     }
 
     @FXML
     private void goToRequests() {
-        goToPage("/ru/nsu/boxberger/divipay/request/requests.fxml", new RequestsController());
+        goToPage(ResourcesPaths.REQUESTS_PATH, new RequestsController());
     }
 
     @FXML
     private void goToPurchases() {
-        goToPage("/ru/nsu/boxberger/divipay/purchase/purchases.fxml", new PurchasesController());
+        goToPage(ResourcesPaths.PURCHASES_PATH, new PurchasesController());
     }
 
     @FXML
     private void goToContacts() {
-        goToPage("/ru/nsu/boxberger/divipay/contacts/contacts.fxml", new ContactsController());
+        goToPage(ResourcesPaths.CONTACTS_PATH, new ContactsController());
     }
+
     @FXML
     private void goToAbout() {
-        goToPage("/ru/nsu/boxberger/divipay/about/about.fxml", new AboutController());
+        goToPage(ResourcesPaths.ABOUT_PATH, new ContactsController());
     }
 }

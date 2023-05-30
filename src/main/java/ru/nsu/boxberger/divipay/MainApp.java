@@ -6,22 +6,24 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.nsu.boxberger.divipay.service.AuthorizationService;
 import ru.nsu.boxberger.divipay.controller.AuthorizationController;
-//import ru.nsu.boxberger.divipay.controller.MainPageController;
+import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 
 public class MainApp extends Application {
     private static Stage primaryStage;
     @Override
     public void start(Stage primaryStage) throws Exception {
         MainApp.primaryStage = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ru/nsu/boxberger/divipay/login/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourcesPaths.LOGIN_PATH));
         Parent root = fxmlLoader.load();
         AuthorizationController controller = fxmlLoader.getController();
         AuthorizationService apiClient = new AuthorizationService();
         controller.setApiClient(apiClient);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/ru/nsu/boxberger/divipay/styles/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(ResourcesPaths.STYLES_PATH).toExternalForm());
         primaryStage.setTitle("DiviPay");
         primaryStage.setScene(scene);
+        primaryStage.setMaxWidth(1280);
+        primaryStage.setMaxHeight(720);
         primaryStage.show();
     }
     public static Stage getPrimaryStage() {

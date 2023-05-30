@@ -17,6 +17,14 @@
     -fx-text-fill: white;
 }
 .login-background {
-    -fx-background-image: url("login.png");
+    -fx-background-image: url("../interface/login.png");
     -fx-background-size: cover;
+}
+.update-button {
+    -fx-background-image: url("../interface/updateButton.png");
+    -fx-background-color:  #221f2f;
+    /*-fx-background-size: cover;*/
+}
+.left-menu {
+    -fx-background-image: url("../interface/leftside_panel.png");
 }

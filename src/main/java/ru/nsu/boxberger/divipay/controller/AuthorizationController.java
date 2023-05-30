@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import ru.nsu.boxberger.divipay.service.AuthorizationService;
 import ru.nsu.boxberger.divipay.model.AuthorizationRequest;
+import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 
 import java.io.IOException;
 
@@ -49,7 +50,7 @@ public class AuthorizationController extends BaseController{
     }
 
     public void goToMainPage() throws IOException {
-        goToPage("/ru/nsu/boxberger/divipay/mainpage/mainpage.fxml", new MainPageController());
+        goToPage(ResourcesPaths.MAINPAGE_PATH, new MainPageController());
     }
 
     public void setApiClient(AuthorizationService apiClient) {

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,13 +14,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #221f2f;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.ProfileController">
+<BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #221f2f;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.ProfileController">
    <left>
       <AnchorPane minHeight="720.0" minWidth="200.0" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #181b25;" BorderPane.alignment="BOTTOM_LEFT">
          <children>
             <ImageView fitHeight="720.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../styles/leftside_panel.png" />
+                  <Image url="@../interface/leftside_panel.png" />
                </image>
             </ImageView>
             <Label fx:id="mainpageButon" layoutX="50.0" layoutY="280.0" onMouseClicked="#goToMainPage" prefHeight="25.0" prefWidth="87.0" text="Главная">
@@ -58,37 +62,115 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="108.0" layoutY="327.0" text="аватарка" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <GridPane layoutX="59.0" layoutY="184.0" prefHeight="121.0" prefWidth="327.0">
+            <GridPane layoutX="450.0" layoutY="25.0" prefHeight="200.0" prefWidth="500.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="186.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="314.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="104.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="147.0" minHeight="2.0" prefHeight="66.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="161.0" text="Имя:" textFill="WHITE">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="53.0" text="Имя:" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="161.0" text="Никнейм: " textFill="WHITE" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="111.0" text="Никнейм:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="162.0" text="Номер телефона: " textFill="WHITE" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="186.0" text="Номер телефона:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
+                  <Label fx:id="nameField" maxHeight="25.0" maxWidth="250.0" text="Артем" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="usernameField" maxHeight="25.0" maxWidth="250.0" text="poor_daddy" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="phoneFiled" maxHeight="25.0" maxWidth="250.0" text="9998889998" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Button fx:id="updateNameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updateUsernameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updatePhoneButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="updateNameFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" promptText="Введите новое имя" styleClass="my-rounded" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+            <ImageView fx:id="avatarImage" fitHeight="400.0" fitWidth="400.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+            <GridPane layoutX="25.0" layoutY="457.0" prefHeight="154.0" prefWidth="509.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="232.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="269.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="25.0" text="Введите новый пароль:" textFill="WHITE" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="25.0" text="Повторите пароль:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <PasswordField alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Введите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </PasswordField>
+                  <PasswordField alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Повторите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </PasswordField>
+                  <Button maxHeight="35.0" maxWidth="265.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="267.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Применить изменения" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Button>
                </children>
             </GridPane>
          </children></AnchorPane>

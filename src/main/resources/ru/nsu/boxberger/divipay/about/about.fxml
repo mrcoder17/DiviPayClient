@@ -13,7 +13,7 @@
          <children>
             <ImageView fitHeight="720.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../styles/leftside_panel.png" />
+                  <Image url="@../interface/leftside_panel.png" />
                </image>
             </ImageView>
             <Label fx:id="mainpageButton" layoutX="50.0" layoutY="280.0" onMouseClicked="#goToMainPage" prefHeight="25.0" prefWidth="87.0" text="Главная" textFill="#313131">
