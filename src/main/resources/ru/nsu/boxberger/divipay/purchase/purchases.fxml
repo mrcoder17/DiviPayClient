@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #221f2f;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.ContactsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #221f2f;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.PurchasesController">
    <left>
       <AnchorPane minHeight="720.0" minWidth="200.0" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #181b25;" BorderPane.alignment="BOTTOM_LEFT">
          <children>
             <ImageView fitHeight="720.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@leftside_panel.png" />
+                  <Image url="@../styles/leftside_panel.png" />
                </image>
             </ImageView>
             <Label fx:id="mainpageButton" layoutX="50.0" layoutY="280.0" onMouseClicked="#goToMainPage" prefHeight="25.0" prefWidth="87.0" text="Главная" textFill="#313131">
@@ -19,22 +19,22 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="profileButton" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="50.0" layoutY="320.0" onMouseClicked="#goToProfile" prefHeight="25.0" prefWidth="127.0" stylesheets="@styles.css" text="Мой профиль" textAlignment="CENTER" textFill="#313131">
+            <Label fx:id="profileButton" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="50.0" layoutY="320.0" onMouseClicked="#goToProfile" prefHeight="25.0" prefWidth="127.0" stylesheets="@../styles/styles.css" text="Мой профиль" textAlignment="CENTER" textFill="#313131">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="requestsButton" layoutX="50.0" layoutY="360.0" onMouseClicked="#goToRequests" prefHeight="25.0" prefWidth="87.0" stylesheets="@styles.css" text="Запросы" textFill="#313131">
+            <Label fx:id="requestsButton" layoutX="50.0" layoutY="360.0" onMouseClicked="#goToRequests" prefHeight="25.0" prefWidth="87.0" stylesheets="@../styles/styles.css" text="Запросы" textFill="#313131">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="purchasesButton" layoutX="50.0" layoutY="400.0" onMouseClicked="#goToPurchases" prefHeight="25.0" prefWidth="109.0" stylesheets="@styles.css" text="Купленное" textFill="#313131">
+            <Label fx:id="purchasesButton" layoutX="50.0" layoutY="400.0" prefHeight="25.0" prefWidth="109.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Купленное" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="contactsButton" layoutX="50.0" layoutY="440.0" prefHeight="25.0" prefWidth="96.0" styleClass="my-rounded" stylesheets="@styles.css" text="Контакты" textFill="WHITE">
+            <Label fx:id="contactsButton" layoutX="50.0" layoutY="440.0" onMouseClicked="#goToContacts" prefHeight="25.0" prefWidth="96.0" text="Контакты" textFill="#313131">
                <font>
                   <Font size="17.0" />
                </font>

@@ -2,30 +2,29 @@ package ru.nsu.boxberger.divipay.controller;
 
 import javafx.fxml.FXML;
 
-import java.io.IOException;
-
 public class MainPageController extends BaseController{
     @FXML
-    private void goToProfile() throws IOException {
-        goToPage("/ru/nsu/boxberger/divipay/profile.fxml", new ProfileController());
-    }
-    @FXML
-    private void goToRequests() throws IOException {
-        goToPage("/ru/nsu/boxberger/divipay/requests.fxml", new RequestsController());
+    private void goToProfile() {
+        goToPage("/ru/nsu/boxberger/divipay/profile/profile.fxml", new ProfileController());
     }
 
     @FXML
-    private void goToPurchases() throws IOException {
-        goToPage("/ru/nsu/boxberger/divipay/purchases.fxml", new PurchasesController());
+    private void goToRequests() {
+        goToPage("/ru/nsu/boxberger/divipay/request/requests.fxml", new RequestsController());
     }
 
     @FXML
-    private void goToContacts() throws IOException {
-        goToPage("/ru/nsu/boxberger/divipay/contacts.fxml", new ContactsController());
+    private void goToPurchases() {
+        goToPage("/ru/nsu/boxberger/divipay/purchase/purchases.fxml", new PurchasesController());
+    }
+
+    @FXML
+    private void goToContacts() {
+        goToPage("/ru/nsu/boxberger/divipay/contacts/contacts.fxml", new ContactsController());
     }
     @FXML
-    private void goToAbout() throws IOException {
-        goToPage("/ru/nsu/boxberger/divipay/about.fxml", new AboutController());
+    private void goToAbout() {
+        goToPage("/ru/nsu/boxberger/divipay/about/about.fxml", new AboutController());
     }
 }
 

@@ -2,22 +2,14 @@ package ru.nsu.boxberger.divipay.model;
 
 public class ProfileData {
     private String name;
-    private String nickname;
-    private int age;
+    private String username;
+    private String avatar;
+    private String phone;
 
-    private String email;
-
-    public ProfileData(String nickname) {
-        this.nickname = nickname;
+    public ProfileData(String username) {
+        this.username = username;
     }
 
-    public String getNickname(){
-        return nickname;
-    }
-
-    public void setNickname(String nickname){
-        this.nickname = nickname;
-    }
 
     public String getName() {
         return name;
@@ -27,19 +19,27 @@ public class ProfileData {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getUsername(){
+        return username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
     }
 }

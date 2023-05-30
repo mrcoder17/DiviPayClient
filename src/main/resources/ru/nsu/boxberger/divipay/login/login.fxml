@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="250.0" maxWidth="720.0" minHeight="250.0" minWidth="720.0" prefHeight="250.0" prefWidth="720.0" styleClass="login-background" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.AuthorizationController">
+   <center>
+      <VBox alignment="CENTER" maxHeight="250.0" maxWidth="320.0" minHeight="250.0" minWidth="320.0" prefHeight="250.0" prefWidth="320.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="usernameField" alignment="CENTER" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Введите имя пользователя" style="-fx-background-color: #221f2f;"  styleClass="my-rounded" stylesheets="@../styles/styles.css" />
+            <PasswordField fx:id="passwordField" alignment="CENTER" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Введите пароль" style="-fx-background-color: #221f2f;" styleClass="my-rounded" />
+         </children>
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </VBox>
+   </center>
+   <left>
+      <Pane maxHeight="250.0" maxWidth="200.0" minHeight="250.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox alignment="CENTER" maxHeight="250.0" maxWidth="200.0" minHeight="250.0" minWidth="200.0" prefHeight="250.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="loginButton" maxHeight="40.0" maxWidth="130.0" minHeight="40.0" minWidth="130.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Авторизация" textAlignment="CENTER" textFill="WHITE" />
+            <Button fx:id="registrationButton" maxHeight="40.0" maxWidth="130.0" minHeight="40.0" minWidth="130.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Регистрация" textFill="WHITE" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

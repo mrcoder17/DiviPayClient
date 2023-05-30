@@ -23,8 +23,10 @@ module ru.nsu.boxberger.divipay {
     opens ru.nsu.boxberger.divipay.controller to javafx.fxml;
     exports ru.nsu.boxberger.divipay.model;
     opens ru.nsu.boxberger.divipay.model to javafx.fxml;
-    exports ru.nsu.boxberger.divipay.api;
-    opens ru.nsu.boxberger.divipay.api to javafx.fxml;
+    exports ru.nsu.boxberger.divipay.service;
+    opens ru.nsu.boxberger.divipay.service to javafx.fxml;
+    exports ru.nsu.boxberger.divipay.utils;
+    opens ru.nsu.boxberger.divipay.utils to javafx.fxml;
 
 
 }
