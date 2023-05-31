@@ -112,17 +112,17 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Button fx:id="updateNameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                  <Button fx:id="updateNameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#updateName" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Button>
-                  <Button fx:id="updateUsernameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <Button fx:id="updateUsernameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#updateUsername" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Button>
-                  <Button fx:id="updatePhoneButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <Button fx:id="updatePhoneButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#updatePhone" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -132,6 +132,19 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </TextField>
+                  <TextField fx:id="updateUsernameFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" promptText="Введите новый никнейм" styleClass="my-rounded" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="updatePhoneFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" promptText="Введите новый номер" styleClass="my-rounded" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Button fx:id="applyNameButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyName" style="-fx-background-color: #221f2f;" styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                  <Button fx:id="applyUsernameButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyUsername" style="-fx-background-color: #221f2f;" styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <Button fx:id="applyPhoneButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyPhone" style="-fx-background-color: #221f2f;" styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <ImageView fx:id="avatarImage" fitHeight="400.0" fitWidth="400.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
@@ -156,23 +169,24 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <PasswordField alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Введите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1">
+                  <PasswordField fx:id="updatePasswordField" alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Введите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </PasswordField>
-                  <PasswordField alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Повторите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <PasswordField fx:id="confirmPasswordField" alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Повторите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </PasswordField>
-                  <Button maxHeight="35.0" maxWidth="265.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="267.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Применить изменения" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="applyNewPasswordButton" maxHeight="35.0" maxWidth="265.0" mnemonicParsing="false" onMouseClicked="#applyNewPassword" prefHeight="51.0" prefWidth="267.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Применить изменения" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Button>
                </children>
             </GridPane>
+            <Label fx:id="passwordNotCorrects" layoutX="329.0" layoutY="425.0" text="Пароли не совпадают" textFill="RED" visible="false" />
          </children></AnchorPane>
    </center>
 </BorderPane>

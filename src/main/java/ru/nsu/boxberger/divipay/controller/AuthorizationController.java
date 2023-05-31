@@ -29,11 +29,7 @@ public class AuthorizationController extends BaseController{
 
             AuthorizationRequest authorizationRequest = new AuthorizationRequest(username, password);
             apiClient.login(authorizationRequest);
-            try {
-                goToMainPage();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            goToMainPage();
         });
         registrationButton.setOnAction(event -> {
             String username = usernameField.getText();
@@ -41,15 +37,12 @@ public class AuthorizationController extends BaseController{
 
             AuthorizationRequest authorizationRequest = new AuthorizationRequest(username, password);
             apiClient.registration(authorizationRequest);
-            try {
-                goToMainPage();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            goToMainPage();
         });
+        setApiClient(apiClient);
     }
 
-    public void goToMainPage() throws IOException {
+    public void goToMainPage() {
         goToPage(ResourcesPaths.MAINPAGE_PATH, new MainPageController());
     }
 

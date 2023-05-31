@@ -23,7 +23,10 @@
 .update-button {
     -fx-background-image: url("../interface/updateButton.png");
     -fx-background-color:  #221f2f;
-    /*-fx-background-size: cover;*/
+}
+.apply-button {
+    -fx-background-image: url("../interface/applyButton1.png");
+    -fx-background-color:  #221f2f;
 }
 .left-menu {
     -fx-background-image: url("../interface/leftside_panel.png");
