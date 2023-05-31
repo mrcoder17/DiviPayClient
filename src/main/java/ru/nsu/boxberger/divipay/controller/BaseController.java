@@ -9,7 +9,7 @@ import ru.nsu.boxberger.divipay.MainApp;
 import java.io.IOException;
 
 public class BaseController {
-    protected void goToPage(String fxmlFile, Object controller) {
+    protected void goToPage(String fxmlFile) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = fxmlLoader.load();
@@ -20,6 +20,5 @@ public class BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

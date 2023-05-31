@@ -13,7 +13,6 @@ module ru.nsu.boxberger.divipay {
     requires spring.beans;
     requires java.sql;
     requires spring.jdbc;
-    requires spring.webflux;
     requires reactor.core;
     requires com.fasterxml.jackson.annotation;
 

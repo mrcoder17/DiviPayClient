@@ -29,26 +29,26 @@ public class AboutController extends BaseController{
 
     @FXML
     private void goToMainPage() {
-        goToPage(ResourcesPaths.MAINPAGE_PATH, new MainPageController());
+        goToPage(ResourcesPaths.MAINPAGE_PATH);
     }
 
     @FXML
     private void goToProfile() {
-        goToPage(ResourcesPaths.PROFILE_PATH, new ProfileController());
+        goToPage(ResourcesPaths.PROFILE_PATH);
     }
 
     @FXML
     private void goToRequests() {
-        goToPage(ResourcesPaths.REQUESTS_PATH, new RequestsController());
+        goToPage(ResourcesPaths.REQUESTS_PATH);
     }
 
     @FXML
     private void goToPurchases() {
-        goToPage(ResourcesPaths.PURCHASES_PATH, new PurchasesController());
+        goToPage(ResourcesPaths.PURCHASES_PATH);
     }
 
     @FXML
     private void goToContacts() {
-        goToPage(ResourcesPaths.CONTACTS_PATH, new ContactsController());
+        goToPage(ResourcesPaths.CONTACTS_PATH);
     }
 }

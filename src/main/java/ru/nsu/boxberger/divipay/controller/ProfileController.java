@@ -14,6 +14,14 @@ import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
 public class ProfileController extends BaseController{
+
+    private final ProfileService profileService;
+    private ProfileModel profileModel = ProfileModel.getInstance();
+
+    public ProfileController (){
+        this.profileService = new ProfileService();
+    }
+
     @FXML
     public TextField updateNameFiled;
     @FXML
@@ -43,8 +51,6 @@ public class ProfileController extends BaseController{
     private Button applyUsernameButton;
     @FXML
     private Button applyPhoneButton;
-    @FXML
-    private Button applyNewPasswordButton;
 
     @FXML
     private Button updateNameButton;
@@ -53,26 +59,30 @@ public class ProfileController extends BaseController{
     @FXML
     private Button updateUsernameButton;
 
-
-    private ProfileService profileService;
-    private ProfileModel profileModel;
-
-    public void setProfileService(ProfileService profileService){
-        this.profileService = profileService;
-    }
-
     @FXML
     private void initialize() {
-        setProfileService(profileService);
-        loadDefaultImage();
         loadProfileData();
+        loadDefaultImage();
     }
 
     private void loadProfileData() {
-        profileModel = profileService.getProfileData(profileService.getAuthenticatedUsername());
-        nameField.setText(profileModel.getName());
-        phoneField.setText(profileModel.getPhone());
-        usernameField.setText(profileModel.getUsername());
+        profileModel = profileService.getProfileData(profileModel.getUsername());
+        if (profileModel.getName() != null){
+            nameField.setText(profileModel.getName());
+        }
+        if (profileModel.getPhone() != null){
+            phoneField.setText(profileModel.getPhone());
+        }
+        if (profileModel.getUsername() != null){
+            usernameField.setText(profileModel.getUsername());
+        }
+    }
+
+    private void loadDefaultImage (){
+        Image image = new Image(ServerUrls.DEFAULT_PROFILE_IMAGE_URL);
+        avatarImage.setImage(image);
+        avatarImage.setFitHeight(400);
+        avatarImage.setFitWidth(400);
     }
 
     @FXML
@@ -113,7 +123,6 @@ public class ProfileController extends BaseController{
         updateNameButton.setVisible(true);
         applyNameButton.setVisible(false);
         nameField.setText(newName);
-        loadProfileData();
     }
 
     @FXML
@@ -127,7 +136,7 @@ public class ProfileController extends BaseController{
         usernameField.setVisible(true);
         updateUsernameButton.setVisible(true);
         usernameField.setText(newUsername);
-        loadProfileData();
+//        loadProfileData();
     }
 
     @FXML
@@ -141,7 +150,7 @@ public class ProfileController extends BaseController{
         phoneField.setVisible(true);
         updatePhoneButton.setVisible(true);
         phoneField.setText(newPhone);
-        loadProfileData();
+//        loadProfileData();
     }
 
     @FXML
@@ -158,38 +167,32 @@ public class ProfileController extends BaseController{
         } else {
             passwordNotCorrects.setVisible(true);
         }
-        loadProfileData();
+//        loadProfileData();
     }
     
-    private void loadDefaultImage (){
-        Image image = new Image(ServerUrls.DEFAULT_PROFILE_IMAGE_URL);
-        avatarImage.setImage(image);
-        avatarImage.setFitHeight(400);
-        avatarImage.setFitWidth(400);
-    }
 
     @FXML
     private void goToMainPage() {
-        goToPage(ResourcesPaths.MAINPAGE_PATH, new MainPageController());
+        goToPage(ResourcesPaths.MAINPAGE_PATH);
     }
 
     @FXML
     private void goToRequests() {
-        goToPage(ResourcesPaths.REQUESTS_PATH, new RequestsController());
+        goToPage(ResourcesPaths.REQUESTS_PATH);
     }
 
     @FXML
     private void goToPurchases() {
-        goToPage(ResourcesPaths.PURCHASES_PATH, new PurchasesController());
+        goToPage(ResourcesPaths.PURCHASES_PATH);
     }
 
     @FXML
     private void goToContacts() {
-        goToPage(ResourcesPaths.CONTACTS_PATH, new ContactsController());
+        goToPage(ResourcesPaths.CONTACTS_PATH);
     }
 
     @FXML
     private void goToAbout() {
-        goToPage(ResourcesPaths.ABOUT_PATH, new ContactsController());
+        goToPage(ResourcesPaths.ABOUT_PATH);
     }
 }

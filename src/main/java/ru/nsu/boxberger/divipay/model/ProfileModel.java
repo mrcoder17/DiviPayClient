@@ -1,14 +1,22 @@
 package ru.nsu.boxberger.divipay.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 public class ProfileModel {
-    private ObservableList<String> usernames;
+
+    private static ProfileModel instance;
+
+//    private ObservableList<String> usernames;
     private String name;
     private String username;
     private String password;
     private String avatar;
     private String phone;
+
+    public static ProfileModel getInstance() {
+        if (instance == null){
+            instance = new ProfileModel();
+        }
+        return instance;
+    }
 
     public String getName() {
         return name;
@@ -50,12 +58,12 @@ public class ProfileModel {
         this.username = username;
     }
 
-    public ProfileModel(){
-        usernames = FXCollections.observableArrayList();
-    }
+//    public ProfileModel(){
+//        usernames = FXCollections.observableArrayList();
+//    }
 
-    public ObservableList<String> getUsernames() {
-        return usernames;
-    }
+//    public ObservableList<String> getUsernames() {
+//        return usernames;
+//    }
 }
 

@@ -6,26 +6,26 @@ import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 public class ContactsController extends BaseController{
     @FXML
     private void goToMainPage() {
-        goToPage(ResourcesPaths.MAINPAGE_PATH, new MainPageController());
+        goToPage(ResourcesPaths.MAINPAGE_PATH);
     }
 
     @FXML
     private void goToProfile() {
-        goToPage(ResourcesPaths.PROFILE_PATH, new ProfileController());
+        goToPage(ResourcesPaths.PROFILE_PATH);
     }
 
     @FXML
     private void goToRequests() {
-        goToPage(ResourcesPaths.REQUESTS_PATH, new RequestsController());
+        goToPage(ResourcesPaths.REQUESTS_PATH);
     }
 
     @FXML
     private void goToPurchases() {
-        goToPage(ResourcesPaths.PURCHASES_PATH, new PurchasesController());
+        goToPage(ResourcesPaths.PURCHASES_PATH);
     }
 
     @FXML
     private void goToAbout() {
-        goToPage(ResourcesPaths.ABOUT_PATH, new ContactsController());
+        goToPage(ResourcesPaths.ABOUT_PATH);
     }
 }
