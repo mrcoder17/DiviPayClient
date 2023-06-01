@@ -4,7 +4,6 @@ public class ProfileModel {
 
     private static ProfileModel instance;
 
-//    private ObservableList<String> usernames;
     private String name;
     private String username;
     private String password;
@@ -42,10 +41,6 @@ public class ProfileModel {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -58,12 +53,5 @@ public class ProfileModel {
         this.username = username;
     }
 
-//    public ProfileModel(){
-//        usernames = FXCollections.observableArrayList();
-//    }
-
-//    public ObservableList<String> getUsernames() {
-//        return usernames;
-//    }
 }
 

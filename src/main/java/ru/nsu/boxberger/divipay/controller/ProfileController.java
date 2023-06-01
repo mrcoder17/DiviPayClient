@@ -80,9 +80,10 @@ public class ProfileController extends BaseController{
 
     private void loadDefaultImage (){
         Image image = new Image(ServerUrls.DEFAULT_PROFILE_IMAGE_URL);
-        avatarImage.setImage(image);
         avatarImage.setFitHeight(400);
         avatarImage.setFitWidth(400);
+        avatarImage.setPreserveRatio(true);
+        avatarImage.setImage(image);
     }
 
     @FXML

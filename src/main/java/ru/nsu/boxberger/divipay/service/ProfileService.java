@@ -8,7 +8,7 @@ import ru.nsu.boxberger.divipay.utils.ServerUrls;
 public class ProfileService extends BaseService{
 
     public ProfileModel getProfileData(String username) {
-        String url = ServerUrls.USERS_URL + username;
+        String url = ServerUrls.USERS_URL + "/" + username;
         ParameterizedTypeReference<ProfileModel> responseType = new ParameterizedTypeReference<>() {};
         ResponseEntity<ProfileModel> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
@@ -21,7 +21,7 @@ public class ProfileService extends BaseService{
     }
 
     public void updateProfileData(ProfileModel profileModel) {
-        String url = ServerUrls.USERS_URL + profileModel.getUsername();
+        String url = ServerUrls.USERS_URL + "/" + profileModel.getUsername();
         ParameterizedTypeReference<ProfileModel> responseType = new ParameterizedTypeReference<>() {};
         ResponseEntity<ProfileModel> responseEntity = requestToServer(profileModel, url, HttpMethod.PUT, responseType);
 

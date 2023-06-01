@@ -34,6 +34,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -42,9 +43,9 @@
 
 <BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #221f2f;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.MainPageController">
    <left>
-      <AnchorPane minHeight="720.0" minWidth="200.0" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #181b25;" BorderPane.alignment="BOTTOM_LEFT">
+      <AnchorPane minHeight="720.0" minWidth="200.0" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #0a0d17;" styleClass="rounded-window" stylesheets="@../styles/styles.css" BorderPane.alignment="BOTTOM_LEFT">
          <children>
-            <ImageView fitHeight="720.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView disable="true" fitHeight="720.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-window">
                <image>
                   <Image url="@../interface/leftside_panel.png" />
                </image>
@@ -86,6 +87,48 @@
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane maxWidth="1030.0" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #1d1e29;" BorderPane.alignment="CENTER_RIGHT" />
+      <AnchorPane maxHeight="50.0" maxWidth="700.0" prefHeight="50.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="usernameField" alignment="CENTER_RIGHT" layoutX="410.0" layoutY="13.0" maxHeight="25.0" maxWidth="250.0" prefHeight="30.0" prefWidth="250.0" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <ImageView fx:id="avatarImage" fitHeight="40.0" fitWidth="40.0" layoutX="655.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="timeLabel" layoutX="130.0" layoutY="13.0" maxHeight="25.0" prefHeight="25.0" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="20.0" layoutY="13.0" maxHeight="25.0" prefHeight="25.0" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets right="20.0" top="20.0" />
+         </BorderPane.margin></AnchorPane>
    </top>
+   <right>
+      <AnchorPane maxHeight="680.0" maxWidth="250.0" minHeight="680.0" minWidth="250.0" prefWidth="250.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" BorderPane.alignment="BOTTOM_CENTER">
+         <children>
+            <ListView fx:id="userListView" editable="true" fixedCellSize="2.0" layoutX="6.0" layoutY="72.0" prefHeight="624.0" prefWidth="240.0" style="-fx-background-color: #161623;" styleClass="rounded-border" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+               <opaqueInsets>
+                  <Insets left="2.0" right="2.0" />
+               </opaqueInsets></ListView>
+            <Label layoutX="23.0" layoutY="20.0" text="Список пользователей" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" right="20.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </right>
 </BorderPane>
