@@ -7,7 +7,7 @@
 .rounded-window {
     -fx-background-radius: 30;
     -fx-border-radius: 30;
-    -fx-background-color: lightgray;
+    /*-fx-background-color: lightgray;*/
     -fx-border-color: gray;
 }
 .my-rounded {
@@ -30,4 +30,7 @@
 }
 .left-menu {
     -fx-background-image: url("../interface/leftside_panel.png");
+}
+.list-cell {
+    -fx-control-inner-background:  #161623;
 }
