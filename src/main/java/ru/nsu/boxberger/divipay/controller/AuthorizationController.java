@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import ru.nsu.boxberger.divipay.service.AuthorizationService;
-import ru.nsu.boxberger.divipay.model.AuthorizationRequest;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 
 
@@ -27,20 +26,15 @@ public class AuthorizationController extends BaseController{
         loginButton.setOnAction(event -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
-
-            AuthorizationRequest authorizationRequest = new AuthorizationRequest(username, password);
-            authorizationService.login(authorizationRequest);
+            authorizationService.login(username, password);
             goToMainPage();
-
         });
         registrationButton.setOnAction(event -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
 
-            AuthorizationRequest authorizationRequest = new AuthorizationRequest(username, password);
-            authorizationService.registration(authorizationRequest);
+            authorizationService.registration(username, password);
             goToMainPage();
-
         });
     }
 

@@ -62,11 +62,11 @@ public class ProfileController extends BaseController{
     @FXML
     private void initialize() {
         loadProfileData();
-        loadDefaultImage();
+        loadDefaultImage(avatarImage);
     }
 
     private void loadProfileData() {
-        profileModel = profileService.getProfileData(profileModel.getUsername());
+        profileModel = profileService.getProfileData(profileModel.getUserID());
         if (profileModel.getName() != null){
             nameField.setText(profileModel.getName());
         }
@@ -78,7 +78,7 @@ public class ProfileController extends BaseController{
         }
     }
 
-    private void loadDefaultImage (){
+    public void loadDefaultImage (ImageView avatarImage){
         Image image = new Image(ServerUrls.DEFAULT_PROFILE_IMAGE_URL);
         avatarImage.setFitHeight(400);
         avatarImage.setFitWidth(400);
@@ -117,7 +117,7 @@ public class ProfileController extends BaseController{
     public void applyName(MouseEvent mouseEvent) {
         String newName = updateNameFiled.getText();
         profileModel.setName(newName);
-        profileService.updateProfileData(profileModel);
+        profileService.updateProfileData(profileModel.getUserID(), profileModel);
         updateNameFiled.setVisible(false);
         updateNameFiled.setText("");
         nameField.setVisible(true);
@@ -130,7 +130,7 @@ public class ProfileController extends BaseController{
     public void applyUsername(MouseEvent mouseEvent) {
         String newUsername = updateUsernameFiled.getText();
         profileModel.setUsername(newUsername);
-        profileService.updateProfileData(profileModel);
+        profileService.updateProfileData(profileModel.getUserID(), profileModel);
         updateUsernameFiled.setVisible(false);
         applyUsernameButton.setVisible(false);
         updateUsernameFiled.setText("");
@@ -144,7 +144,7 @@ public class ProfileController extends BaseController{
     public void applyPhone(MouseEvent mouseEvent) {
         String newPhone = updatePhoneFiled.getText();
         profileModel.setPhone(newPhone);
-        profileService.updateProfileData(profileModel);
+        profileService.updateProfileData(profileModel.getUserID(), profileModel);
         updatePhoneFiled.setVisible(false);
         applyPhoneButton.setVisible(false);
         updatePhoneFiled.setText("");
@@ -161,7 +161,7 @@ public class ProfileController extends BaseController{
 
         if (newPassword.equals(confirmPassword)){
             profileModel.setPassword(newPassword);
-            profileService.updateProfileData(profileModel);
+            profileService.updateProfileData(profileModel.getUserID(), profileModel);
             passwordNotCorrects.setVisible(false);
             updatePasswordField.setText("");
             confirmPasswordField.setText("");

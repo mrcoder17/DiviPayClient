@@ -1,38 +1,40 @@
 package ru.nsu.boxberger.divipay.model;
 
-public class ProfileModel extends UserRequest{
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    private static ProfileModel instance;
+public class UserRequest {
 
+    @JsonProperty ("userID")
     private Long userID;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty ("username")
     private String username;
+
+    @JsonProperty ("password")
     private String password;
+
+    @JsonProperty ("avatar")
     private String avatar;
+
+    @JsonProperty ("phone")
     private String phone;
 
-    public static ProfileModel getInstance() {
-        if (instance == null){
-            instance = new ProfileModel();
-        }
-        return instance;
+    public UserRequest (String username, String password){
+        this.username = username;
+        this.password = password;
     }
 
-    public void populateFromUserRequest(UserRequest userRequest) {
-        this.userID = userRequest.getUserID();
-        this.name = userRequest.getName();
-        this.username = userRequest.getUsername();
-        this.password = userRequest.getPassword();
-        this.avatar = userRequest.getAvatar();
-        this.phone = userRequest.getPhone();
+    public UserRequest() {
+
     }
 
-    @Override
     public Long getUserID() {
         return userID;
     }
 
-    @Override
     public void setUserID(Long userID) {
         this.userID = userID;
     }
@@ -61,6 +63,10 @@ public class ProfileModel extends UserRequest{
         this.phone = phone;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -74,4 +80,3 @@ public class ProfileModel extends UserRequest{
     }
 
 }
-

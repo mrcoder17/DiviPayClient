@@ -16,7 +16,6 @@ public class AuthorizationRequest {
         this.username = username;
         this.password = password;
     }
-//    @Json
 
     public String getUsername() {
         return username;

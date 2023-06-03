@@ -3,19 +3,31 @@ package ru.nsu.boxberger.divipay.model;
 public class PurchasesModel {
 
     private Long purchaseID;
-    private ProfileModel profileModel = ProfileModel.getInstance();
+    private Long userID;
+    private String username;
     private String itemName;
     private Integer quantity;
     private Double price;
 
+
+
     @Override
     public String toString() {
         return  purchaseID +
-                ". " + itemName + '\'' +
-                "от " + profileModel.getUsername() +
+                ". '" + itemName +
+                "' от " + username +
                 ", кол-во: " + quantity +
-                ", цена за шт: " + price + "Руб.";
+                ", цена за шт: " + price + " Руб.";
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Long getPurchaseID() {
         return purchaseID;
     }
@@ -46,5 +58,13 @@ public class PurchasesModel {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 }

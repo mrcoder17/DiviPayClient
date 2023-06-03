@@ -1,26 +1,43 @@
 package ru.nsu.boxberger.divipay.model;
 
 public class RequestsModel {
-    ProfileModel profileModel = ProfileModel.getInstance();
 
-    private Long requestsID;
+    private Long requestID;
+    private Long userID;
+    private String username;
     private String itemName;
     private Integer quantity;
 
     @Override
     public String toString() {
-        return  requestsID +
-                ". " + itemName + '\'' +
-                " от " + profileModel.getUsername() +
+        return  requestID +
+                ". " + itemName +
+                " от " + username +
                 " в кол-ве: " + quantity  + "у.е";
     }
 
-    public Long getRequestsID() {
-        return requestsID;
+    public String getUsername() {
+        return username;
     }
 
-    public void setRequestsID(Long requestsID) {
-        this.requestsID = requestsID;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public Long getRequestID() {
+        return requestID;
+    }
+
+    public void setRequestID(Long requestsID) {
+        this.requestID = requestsID;
     }
 
     public String getItemName() {
