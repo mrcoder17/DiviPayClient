@@ -9,6 +9,7 @@ import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.model.RequestsModel;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
+import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
 public class MainPageController extends BaseController{
 
@@ -36,13 +37,15 @@ public class MainPageController extends BaseController{
 
     @FXML
     private void initialize() {
-        usernameField.setText(profileModel.getUsername());
 
         loadUsersFromServer(connectedUsers, userListView);
         loadPurchasesFromServer(purchases, purchasesListView);
         loadRequestsFromServer(requests, requestsListView);
-        loadDefaultImage(avatarImage);
         loadDateTime(dateLabel, timeLabel);
+
+        usernameField.setText(profileModel.getUsername());
+        if (profileModel.getAvatar() != null)
+            loadImage(avatarImage, profileModel.getAvatar());
     }
 
     @FXML

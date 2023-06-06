@@ -10,11 +10,11 @@ import ru.nsu.boxberger.divipay.model.RequestsModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
-import java.util.List;
+import java.util.*;
 
 public class BaseService {
     private static final RestTemplate restTemplate;
-
+    private static Map<Long, UserRequest> userMap = new HashMap<>();
     static {
         restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -28,31 +28,23 @@ public class BaseService {
         return restTemplate.exchange(URL, method, requestEntity, responseType);
     }
 
-    public static UserRequest getUserFromServer(Long id) {
-        String url = ServerUrls.USERS_URL + "/" + id;
-        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {};
-
-        ResponseEntity<UserRequest> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
-
-        if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseEntity.getBody();
-        } else {
-            throw new RuntimeException("Failed to retrieve user from server. Status code: " + responseEntity.getStatusCodeValue());
-        }
-    }
-
-    public static List<String> getUsernamesFromServer() {
+    public static List<UserRequest> getUsersFromServer() {
         String url = ServerUrls.USERS_URL;
-        ParameterizedTypeReference<List<String>> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<List<UserRequest>> responseType = new ParameterizedTypeReference<>() {};
 
-        ResponseEntity<List<String>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
+        ResponseEntity<List<UserRequest>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseEntity.getBody();
+            List<UserRequest> users = responseEntity.getBody();
+            for (UserRequest user: users) {
+                userMap.put(user.getUserID(), user);
+            }
+            return users;
         } else {
             throw new RuntimeException("Failed to retrieve usernames from server. Status code: " + responseEntity.getStatusCodeValue());
         }
     }
+
 
     public static List<PurchasesModel> getPurchasesFromServer() {
         String url = ServerUrls.PURCHASES_URL;
@@ -62,9 +54,15 @@ public class BaseService {
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             List<PurchasesModel> purchases = responseEntity.getBody();
+
             for (PurchasesModel purchase : purchases) {
-                UserRequest user = getUserFromServer(purchase.getUserID());
-                purchase.setUsername(user.getUsername());
+                Long userID = purchase.getUserID();
+                if (userMap.containsKey(userID)){
+                    UserRequest user = userMap.get(userID);
+                    purchase.setUsername(user.getUsername());
+                } else {
+                    throw new RuntimeException("User not found for userID: " + userID);
+                }
             }
             return purchases;
         } else {
@@ -81,12 +79,30 @@ public class BaseService {
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             List<RequestsModel> requests = responseEntity.getBody();
             for (RequestsModel request : requests) {
-                UserRequest user = getUserFromServer(request.getUserID());
-                request.setUsername(user.getUsername());
+                Long userID = request.getUserID();
+                if (userMap.containsKey(userID)){
+                    UserRequest user = userMap.get(userID);
+                    request.setUsername(user.getUsername());
+                } else {
+                    throw new RuntimeException("User not found for userID: " + userID);
+                }
             }
             return requests;
         } else {
             throw new RuntimeException("Failed to retrieve requests from server. Status code: " + responseEntity.getStatusCodeValue());
+        }
+    }
+
+    public static UserRequest getUserFromServer(Long id) {
+        String url = ServerUrls.USERS_URL + "/" + id;
+        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {};
+
+        ResponseEntity<UserRequest> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            return responseEntity.getBody();
+        } else {
+            throw new RuntimeException("Failed to retrieve user from server. Status code: " + responseEntity.getStatusCodeValue());
         }
     }
 }

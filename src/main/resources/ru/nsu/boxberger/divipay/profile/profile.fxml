@@ -16,218 +16,198 @@
 
 <BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #221f2f;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.ProfileController">
    <left>
-      <AnchorPane minHeight="720.0" minWidth="200.0" prefHeight="720.0" prefWidth="250.0"
-                  style="-fx-background-color: #181b25;" BorderPane.alignment="BOTTOM_LEFT">
+      <AnchorPane minHeight="720.0" minWidth="200.0" prefHeight="720.0" prefWidth="250.0" style="-fx-background-color: #181b25;" BorderPane.alignment="BOTTOM_LEFT">
          <ImageView fitHeight="720.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../interface/leftside_panel.png"/>
+            <Image url="@../interface/leftside_panel.png" />
          </ImageView>
-         <Label layoutX="50.0" layoutY="280.0" onMouseClicked="#goToMainPage" prefHeight="25.0" prefWidth="87.0"
-                text="Главная">
+         <Label layoutX="50.0" layoutY="280.0" onMouseClicked="#goToMainPage" prefHeight="25.0" prefWidth="87.0" text="Главная">
             <font>
-               <Font size="17.0"/>
+               <Font size="17.0" />
             </font>
          </Label>
-         <Label contentDisplay="CENTER" graphicTextGap="5.0" layoutX="50.0" layoutY="320.0" prefHeight="25.0"
-                prefWidth="127.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Мой профиль"
-                textAlignment="CENTER" textFill="WHITE">
+         <Label contentDisplay="CENTER" graphicTextGap="5.0" layoutX="50.0" layoutY="320.0" prefHeight="25.0" prefWidth="127.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Мой профиль" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font size="17.0"/>
+               <Font size="17.0" />
             </font>
          </Label>
-         <Label layoutX="50.0" layoutY="360.0" onMouseClicked="#goToRequests" prefHeight="25.0" prefWidth="87.0"
-                text="Запросы">
+         <Label layoutX="50.0" layoutY="360.0" onMouseClicked="#goToRequests" prefHeight="25.0" prefWidth="87.0" text="Запросы">
             <font>
-               <Font size="17.0"/>
+               <Font size="17.0" />
             </font>
          </Label>
-         <Label layoutX="50.0" layoutY="400.0" onMouseClicked="#goToPurchases" prefHeight="25.0" prefWidth="109.0"
-                text="Купленное">
+         <Label layoutX="50.0" layoutY="400.0" onMouseClicked="#goToPurchases" prefHeight="25.0" prefWidth="109.0" text="Купленное">
             <font>
-               <Font size="17.0"/>
+               <Font size="17.0" />
             </font>
          </Label>
-         <Label layoutX="50.0" layoutY="440.0" onMouseClicked="#goToContacts" prefHeight="25.0" prefWidth="96.0"
-                text="Контакты">
+         <Label layoutX="50.0" layoutY="440.0" onMouseClicked="#goToContacts" prefHeight="25.0" prefWidth="96.0" text="Контакты">
             <font>
-               <Font size="17.0"/>
+               <Font size="17.0" />
             </font>
          </Label>
-         <Label layoutX="50.0" layoutY="480.0" onMouseClicked="#goToAbout" prefHeight="25.0" prefWidth="61.0"
-                text="About">
+         <Label layoutX="50.0" layoutY="480.0" onMouseClicked="#goToAbout" prefHeight="25.0" prefWidth="61.0" text="About">
             <font>
-               <Font size="17.0"/>
+               <Font size="17.0" />
             </font>
          </Label>
       </AnchorPane>
    </left>
-   <top>
-      <AnchorPane maxWidth="1030.0" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #1d1e29;" BorderPane.alignment="CENTER_RIGHT" />
-   </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <GridPane layoutX="450.0" layoutY="25.0" prefHeight="200.0" prefWidth="500.0">
-            <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="186.0"/>
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="314.0"/>
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES"/>
-               <RowConstraints maxHeight="104.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES"/>
-               <RowConstraints maxHeight="147.0" minHeight="2.0" prefHeight="66.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="53.0" text="Имя:"
-                   textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT">
-               <font>
-                  <Font size="20.0"/>
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="111.0" text="Никнейм:" textFill="WHITE"
-                   GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0"/>
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="186.0" text="Номер телефона:"
-                   textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0"/>
-               </font>
-            </Label>
-            <Label fx:id="nameField" maxHeight="25.0" maxWidth="250.0" text="Артем" textFill="WHITE"
-                   GridPane.columnIndex="1">
-               <font>
-                  <Font size="20.0"/>
-               </font>
-               <GridPane.margin>
-                  <Insets left="5.0"/>
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="usernameField" maxHeight="25.0" maxWidth="250.0" text="poor_daddy" textFill="WHITE"
-                   GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0"/>
-               </font>
-               <GridPane.margin>
-                  <Insets left="5.0"/>
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="phoneField" maxHeight="25.0" maxWidth="250.0" text="9998889998" textFill="WHITE"
-                   GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0"/>
-               </font>
-               <GridPane.margin>
-                  <Insets left="5.0"/>
-               </GridPane.margin>
-            </Label>
-            <Button fx:id="updateNameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0"
-                    maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#updateName" styleClass="update-button" stylesheets="@../styles/styles.css"
-                    textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
-               <font>
-                  <Font size="11.0"/>
-               </font>
-            </Button>
-            <Button fx:id="updateUsernameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0"
-                    maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#updateUsername" styleClass="update-button" stylesheets="@../styles/styles.css"
-                    textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
-                    GridPane.rowIndex="1">
-               <font>
-                  <Font size="11.0"/>
-               </font>
-            </Button>
-            <Button fx:id="updatePhoneButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0"
-                    maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#updatePhone" styleClass="update-button" stylesheets="@../styles/styles.css"
-                    textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
-                    GridPane.rowIndex="2">
-               <font>
-                  <Font size="11.0"/>
-               </font>
-            </Button>
-            <TextField fx:id="updateNameFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0"
-                       promptText="Введите новое имя" styleClass="my-rounded" stylesheets="@../styles/styles.css"
-                       visible="false" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="15.0"/>
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="updateUsernameFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0"
-                       minWidth="250.0" promptText="Введите новый никнейм" styleClass="my-rounded"
-                       stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1"
-                       GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="15.0"/>
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="updatePhoneFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0"
-                       promptText="Введите новый номер" styleClass="my-rounded" stylesheets="@../styles/styles.css"
-                       visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="15.0"/>
-               </GridPane.margin>
-            </TextField>
-            <Button fx:id="applyNameButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0"
-                    mnemonicParsing="false" onMouseClicked="#applyName" style="-fx-background-color: #221f2f;"
-                    styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false"
-                    GridPane.columnIndex="1" GridPane.halignment="RIGHT"/>
-            <Button fx:id="applyUsernameButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0"
-                    mnemonicParsing="false" onMouseClicked="#applyUsername" style="-fx-background-color: #221f2f;"
-                    styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false"
-                    GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
-            <Button fx:id="applyPhoneButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0"
-                    mnemonicParsing="false" onMouseClicked="#applyPhone" style="-fx-background-color: #221f2f;"
-                    styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false"
-                    GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
-         </GridPane>
-         <ImageView fx:id="avatarImage" fitHeight="400.0" fitWidth="400.0" layoutX="25.0" layoutY="25.0"
-                    pickOnBounds="true" preserveRatio="true"/>
-         <GridPane layoutX="25.0" layoutY="457.0" prefHeight="154.0" prefWidth="509.0">
-            <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="232.0"/>
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="269.0"/>
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES"/>
-               <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES"/>
-               <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <Label prefHeight="25.0" text="Введите новый пароль:" textFill="WHITE" GridPane.halignment="RIGHT">
-               <font>
-                  <Font size="18.0"/>
-               </font>
-            </Label>
-            <Label prefHeight="25.0" text="Повторите пароль:" textFill="WHITE" GridPane.halignment="RIGHT"
-                   GridPane.rowIndex="1">
-               <font>
-                  <Font size="18.0"/>
-               </font>
-            </Label>
-            <PasswordField fx:id="updatePasswordField" alignment="CENTER" maxHeight="35.0" maxWidth="265.0"
-                           prefHeight="35.0" prefWidth="300.0" promptText="Введите пароль" styleClass="my-rounded"
-                           stylesheets="@../styles/styles.css" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets left="5.0"/>
-               </GridPane.margin>
-            </PasswordField>
-            <PasswordField fx:id="confirmPasswordField" alignment="CENTER" maxHeight="35.0" maxWidth="265.0"
-                           prefHeight="35.0" prefWidth="300.0" promptText="Повторите пароль" styleClass="my-rounded"
-                           stylesheets="@../styles/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="5.0"/>
-               </GridPane.margin>
-            </PasswordField>
-            <Button maxHeight="35.0" maxWidth="265.0" mnemonicParsing="false" onMouseClicked="#applyNewPassword"
-                    prefHeight="51.0" prefWidth="267.0" styleClass="my-rounded" stylesheets="@../styles/styles.css"
-                    text="Применить изменения" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="5.0"/>
-               </GridPane.margin>
-            </Button>
-         </GridPane>
-         <Label fx:id="passwordNotCorrects" layoutX="329.0" layoutY="425.0" text="Пароли не совпадают" textFill="RED"
-                visible="false"/>
+         <AnchorPane prefHeight="250.0" prefWidth="550.0" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+            <children>
+               <GridPane prefHeight="200.0" prefWidth="500.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="186.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="314.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                     <RowConstraints maxHeight="104.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+                     <RowConstraints maxHeight="147.0" minHeight="2.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="53.0" text="Имя:" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="111.0" text="Никнейм:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="186.0" text="Номер телефона:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nameField" maxHeight="25.0" maxWidth="250.0" text="Артем" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="usernameField" maxHeight="25.0" maxWidth="250.0" text="poor_daddy" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="phoneField" maxHeight="25.0" maxWidth="250.0" text="9998889998" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Button fx:id="updateNameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#updateName" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updateUsernameButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#updateUsername" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updatePhoneButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#updatePhone" styleClass="update-button" stylesheets="@../styles/styles.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="updateNameFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" promptText="Введите новое имя" styleClass="my-rounded" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="updateUsernameFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" promptText="Введите новый никнейм" styleClass="my-rounded" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="updatePhoneFiled" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" promptText="Введите новый номер" styleClass="my-rounded" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Button fx:id="applyNameButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyName" style="-fx-background-color: #221f2f;" styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                  <Button fx:id="applyUsernameButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyUsername" style="-fx-background-color: #221f2f;" styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <Button fx:id="applyPhoneButton" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyPhone" style="-fx-background-color: #221f2f;" styleClass="apply-button" stylesheets="@../styles/styles.css" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+               </GridPane>
+            </children>
+         </AnchorPane>
+         <ImageView fx:id="avatarImage" fitHeight="390.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
+         <AnchorPane prefHeight="250.0" prefWidth="550.0" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="450.0">
+            <children>
+               <TextField fx:id="avatarField" alignment="CENTER" layoutX="32.0" layoutY="32.0" prefHeight="37.0" prefWidth="328.0" promptText="Введите ссылку для загрузки фото" styleClass="my-rounded" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
+               <Button layoutX="89.0" layoutY="90.0" maxHeight="35.0" maxWidth="265.0" mnemonicParsing="false" onMouseClicked="#applyNewAvatar" prefHeight="51.0" prefWidth="267.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Обновить фотографию" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="90.0" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="450.0" layoutY="316.0" prefHeight="250.0" prefWidth="550.0" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0">
+            <children>
+               <GridPane prefHeight="154.0" prefWidth="509.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="232.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="269.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                     <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                     <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <Label prefHeight="25.0" text="Введите новый пароль:" textFill="WHITE" GridPane.halignment="RIGHT">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="25.0" text="Повторите пароль:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="updatePasswordField" alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Введите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </PasswordField>
+                  <PasswordField fx:id="confirmPasswordField" alignment="CENTER" maxHeight="35.0" maxWidth="265.0" prefHeight="35.0" prefWidth="300.0" promptText="Повторите пароль" styleClass="my-rounded" stylesheets="@../styles/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </PasswordField>
+                  <Button maxHeight="35.0" maxWidth="265.0" mnemonicParsing="false" onMouseClicked="#applyNewPassword" prefHeight="51.0" prefWidth="267.0" styleClass="my-rounded" stylesheets="@../styles/styles.css" text="Применить изменения" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Button>
+               </GridPane>
+               <Label fx:id="passwordNotCorrects" alignment="CENTER" layoutX="265.0" layoutY="199.0" prefHeight="25.0" prefWidth="255.0" text="Пароли не совпадают" textFill="RED" visible="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="199.0" />
+            </children>
+         </AnchorPane>
       </AnchorPane>
    </center>
+   <top>
+      <AnchorPane maxHeight="50.0" maxWidth="970.0" minHeight="50.0" minWidth="970.0" prefHeight="50.0" prefWidth="970.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <Label fx:id="timeLabel" layoutX="450.0" layoutY="13.0" maxHeight="25.0" prefHeight="25.0" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="20.0" layoutY="13.0" maxHeight="25.0" prefHeight="25.0" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets right="30.0" top="30.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </top>
 </BorderPane>

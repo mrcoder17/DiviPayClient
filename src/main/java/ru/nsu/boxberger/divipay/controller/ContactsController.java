@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
+import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
 public class ContactsController extends BaseController{
 
@@ -29,9 +30,9 @@ public class ContactsController extends BaseController{
     @FXML
     private void initialize() {
         usernameField.setText(profileModel.getUsername());
+        loadImage(avatarImage, profileModel.getAvatar());
 
         loadUsersFromServer(connectedUsers, contactsListView);
-        loadDefaultImage(avatarImage);
         loadDateTime(dateLabel, timeLabel);
     }
 

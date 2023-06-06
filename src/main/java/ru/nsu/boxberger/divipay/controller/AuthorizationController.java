@@ -24,16 +24,11 @@ public class AuthorizationController extends BaseController{
     @FXML
     private void initialize() {
         loginButton.setOnAction(event -> {
-            String username = usernameField.getText();
-            String password = passwordField.getText();
-            authorizationService.login(username, password);
+            authorizationService.login(usernameField.getText(), passwordField.getText());
             goToMainPage();
         });
         registrationButton.setOnAction(event -> {
-            String username = usernameField.getText();
-            String password = passwordField.getText();
-
-            authorizationService.registration(username, password);
+            authorizationService.registration(usernameField.getText(), passwordField.getText());
             goToMainPage();
         });
     }

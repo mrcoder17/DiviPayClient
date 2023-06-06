@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #221f2f;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.boxberger.divipay.controller.RequestsController">
@@ -109,7 +112,7 @@
          <children>
             <AnchorPane layoutX="30.0" layoutY="30.0" maxHeight="580.0" maxWidth="335.0" prefHeight="580.0" prefWidth="335.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
                <children>
-                  <AnchorPane layoutX="9.0" layoutY="54.0" maxHeight="575.0" maxWidth="678.0" prefHeight="461.0" prefWidth="674.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="53.0">
+                  <AnchorPane layoutX="9.0" layoutY="54.0" maxHeight="575.0" maxWidth="678.0" prefHeight="461.0" prefWidth="674.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
                      <children>
                         <ListView fx:id="requestsListView" editable="true" fixedCellSize="0.0" layoutX="12.0" layoutY="12.0" prefHeight="436.0" prefWidth="650.0" style="-fx-background-color: #161623;" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="11.0">
                            <opaqueInsets>
@@ -123,6 +126,36 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
+                  <AnchorPane prefHeight="132.0" prefWidth="662.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="500.0">
+                     <children>
+                        <Button fx:id="addRequestButton" maxHeight="30.0" minHeight="40.0" mnemonicParsing="false" onMouseClicked="#addNewRequest" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Создать запрос на покупку" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Button>
+                        <HBox fx:id="fieldPane" prefHeight="48.0" prefWidth="608.0" spacing="15.0" visible="false" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <TextField fx:id="nameRequestField" accessibleRole="SPINNER" alignment="CENTER" prefHeight="35.0" prefWidth="455.0" promptText="Название" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="quantityRequestField" alignment="CENTER" prefHeight="35.0" prefWidth="100.0" promptText="Кол-во" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <Button maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyNewRequest" style="-fx-background-color: #161623;" styleClass="apply-button">
+                                 <HBox.margin>
+                                    <Insets top="-1.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Label fx:id="nameErrorLabel" layoutX="111.0" layoutY="60.0" text="введите название" visible="false" />
+                        <Label fx:id="priceErrorLabel" layoutX="313.0" layoutY="60.0" text="введите корректную цену" visible="false" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

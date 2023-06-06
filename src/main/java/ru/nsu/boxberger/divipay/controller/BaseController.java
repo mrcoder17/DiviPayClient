@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import ru.nsu.boxberger.divipay.MainApp;
 import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.model.RequestsModel;
+import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.BaseService;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseController {
@@ -65,7 +67,12 @@ public class BaseController {
 
     private List<String> getUsersFromServer(){
         try {
-            return BaseService.getUsernamesFromServer();
+            List<UserRequest> users = BaseService.getUsersFromServer();
+            List<String> usernames = new ArrayList<>();
+            for (UserRequest user : users){
+                usernames.add(user.getUsername());
+            }
+            return usernames;
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -155,8 +162,8 @@ public class BaseController {
         dateLabel.setText(formattedDate);
     }
 
-    void loadDefaultImage(ImageView avatarImage){
-        Image image = new Image(ServerUrls.DEFAULT_PROFILE_IMAGE_URL);
+    void loadImage(ImageView avatarImage, String url){
+        Image image = new Image(url);
         avatarImage.setFitHeight(40);
         avatarImage.setFitWidth(40);
         avatarImage.setPreserveRatio(true);

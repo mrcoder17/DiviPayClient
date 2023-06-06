@@ -18,15 +18,6 @@ public class ProfileModel extends UserRequest{
         return instance;
     }
 
-    public void populateFromUserRequest(UserRequest userRequest) {
-        this.userID = userRequest.getUserID();
-        this.name = userRequest.getName();
-        this.username = userRequest.getUsername();
-        this.password = userRequest.getPassword();
-        this.avatar = userRequest.getAvatar();
-        this.phone = userRequest.getPhone();
-    }
-
     @Override
     public Long getUserID() {
         return userID;

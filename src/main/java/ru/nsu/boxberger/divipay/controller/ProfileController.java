@@ -16,6 +16,7 @@ import ru.nsu.boxberger.divipay.utils.ServerUrls;
 public class ProfileController extends BaseController{
 
     private final ProfileService profileService;
+
     private ProfileModel profileModel = ProfileModel.getInstance();
 
     public ProfileController (){
@@ -29,9 +30,16 @@ public class ProfileController extends BaseController{
     @FXML
     public TextField updatePhoneFiled;
     @FXML
+    public TextField avatarField;
+    @FXML
     public PasswordField updatePasswordField;
     @FXML
     public PasswordField confirmPasswordField;
+
+    @FXML
+    public Label timeLabel;
+    @FXML
+    public Label dateLabel;
 
     @FXML
     public Label nameField;
@@ -62,26 +70,21 @@ public class ProfileController extends BaseController{
     @FXML
     private void initialize() {
         loadProfileData();
-        loadDefaultImage(avatarImage);
+        loadDateTime(dateLabel, timeLabel);
     }
 
     private void loadProfileData() {
-        profileModel = profileService.getProfileData(profileModel.getUserID());
-        if (profileModel.getName() != null){
-            nameField.setText(profileModel.getName());
-        }
-        if (profileModel.getPhone() != null){
-            phoneField.setText(profileModel.getPhone());
-        }
-        if (profileModel.getUsername() != null){
-            usernameField.setText(profileModel.getUsername());
-        }
+        nameField.setText(profileModel.getName());
+        phoneField.setText(profileModel.getPhone());
+        usernameField.setText(profileModel.getUsername());
+        if (profileModel.getAvatar() != null)
+            loadImage(avatarImage, profileModel.getAvatar());
     }
 
-    public void loadDefaultImage (ImageView avatarImage){
-        Image image = new Image(ServerUrls.DEFAULT_PROFILE_IMAGE_URL);
-        avatarImage.setFitHeight(400);
-        avatarImage.setFitWidth(400);
+    public void loadImage (ImageView avatarImage, String url){
+        Image image = new Image(url);
+        avatarImage.setFitHeight(390);
+        avatarImage.setFitWidth(390);
         avatarImage.setPreserveRatio(true);
         avatarImage.setImage(image);
     }
@@ -137,7 +140,6 @@ public class ProfileController extends BaseController{
         usernameField.setVisible(true);
         updateUsernameButton.setVisible(true);
         usernameField.setText(newUsername);
-//        loadProfileData();
     }
 
     @FXML
@@ -168,9 +170,14 @@ public class ProfileController extends BaseController{
         } else {
             passwordNotCorrects.setVisible(true);
         }
-//        loadProfileData();
     }
-    
+    public void applyNewAvatar(MouseEvent mouseEvent) {
+        String newAvatar = avatarField.getText();
+        loadImage(avatarImage, newAvatar);
+        profileModel.setAvatar(newAvatar);
+        profileService.updateProfileData(profileModel.getUserID(), profileModel);
+        avatarField.setText("");
+    }
 
     @FXML
     private void goToMainPage() {

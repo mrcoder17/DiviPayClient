@@ -12,34 +12,35 @@ public class AuthorizationService extends BaseService{
 
     public void login(String username, String password) {
         UserRequest userRequest = new UserRequest(username, password);
-        ParameterizedTypeReference<Long> responseType = new ParameterizedTypeReference<>() {};
-        ResponseEntity<Long> responseEntity = requestToServer(userRequest, ServerUrls.LOGIN_URL, HttpMethod.POST, responseType);
+        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {};
+        ResponseEntity<UserRequest> responseEntity = requestToServer(userRequest, ServerUrls.LOGIN_URL, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Login successful.");
-            Long userID = responseEntity.getBody();
-            if (userID != null) {
-                profile.setUserID(userID);
-                profile.setUsername(username);
-                profile.setPassword(password);
-            }
+            UserRequest user = responseEntity.getBody();
+
+            profile.setUserID(user.getUserID());
+            profile.setUsername(user.getUsername());
+            profile.setPassword(user.getPassword());
+            profile.setAvatar(user.getAvatar());
+
+            if (user.getName() != null) profile.setName(user.getName());
+            if (user.getPhone() != null) profile.setPhone(user.getPhone());
         } else {
             System.err.println("Failed: " + responseEntity.getStatusCode().value());
         }
     }
     public void registration(String username, String password) {
-        UserRequest userRequest = new UserRequest(username, password);
-        ParameterizedTypeReference<Long> responseType = new ParameterizedTypeReference<>() {};
-        ResponseEntity<Long> responseEntity = requestToServer(userRequest, ServerUrls.REGISTRATION_URL, HttpMethod.POST, responseType);
+        UserRequest user = new UserRequest(username, password);
+        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {};
+        ResponseEntity<UserRequest> responseEntity = requestToServer(user, ServerUrls.REGISTRATION_URL, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Registration successful.");
-            Long userID = responseEntity.getBody();
-            if (userID != null) {
-                profile.setUserID(userID);
-                profile.setUsername(username);
-                profile.setPassword(password);
-            }
+            user = responseEntity.getBody();
+            profile.setUserID(user.getUserID());
+            profile.setUsername(username);
+            profile.setPassword(password);
         } else {
             System.err.println("Failed: " + responseEntity.getStatusCode().value());
         }

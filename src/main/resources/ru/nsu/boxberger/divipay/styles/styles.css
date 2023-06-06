@@ -11,7 +11,7 @@
     -fx-border-color: gray;
 }
 .my-rounded {
-    -fx-background-radius: 6;
+    -fx-background-radius: 8;
     -fx-background-color: rgb(24, 21, 35), rgb(24, 21, 35);
     -fx-background-insets: 0, 0 1 1 0;
     -fx-text-fill: white;

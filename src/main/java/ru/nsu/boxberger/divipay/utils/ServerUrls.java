@@ -8,7 +8,7 @@ public final class ServerUrls {
     public static final String LOGIN_URL = BASE_URL + "/api/login";
     public static final String REGISTRATION_URL = BASE_URL + "/api/registration";
 
-    public static final String DEFAULT_PROFILE_IMAGE_URL = "https://i.postimg.cc/8P3wGrYx/avatar.jpg";
+//    public static final String DEFAULT_PROFILE_IMAGE_URL = "https://i.postimg.cc/8P3wGrYx/avatar.jpg";
 
     private ServerUrls() {}
 }
