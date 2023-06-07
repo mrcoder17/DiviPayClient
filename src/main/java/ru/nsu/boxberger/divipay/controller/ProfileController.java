@@ -11,15 +11,14 @@ import javafx.scene.input.MouseEvent;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.service.ProfileService;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
-import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
-public class ProfileController extends BaseController{
+public class ProfileController extends BaseController {
 
     private final ProfileService profileService;
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
 
-    public ProfileController (){
+    public ProfileController() {
         this.profileService = new ProfileService();
     }
 
@@ -80,7 +79,7 @@ public class ProfileController extends BaseController{
         loadImage(avatarImage, profileModel.getAvatar());
     }
 
-    public void loadImage (ImageView avatarImage, String url){
+    public void loadImage(ImageView avatarImage, String url) {
         Image image = new Image(url);
         avatarImage.setFitHeight(390);
         avatarImage.setFitWidth(390);
@@ -89,7 +88,7 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    public void updateName(MouseEvent mouseEvent) {
+    public void updateName() {
         nameField.setVisible(false);
         updateNameButton.setVisible(false);
         updateNameFiled.setText(profileModel.getName());
@@ -98,7 +97,7 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    private void updateUsername(MouseEvent mouseEvent) {
+    private void updateUsername() {
         usernameField.setVisible(false);
         updateUsernameButton.setVisible(false);
         updateUsernameFiled.setText(profileModel.getUsername());
@@ -107,7 +106,7 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    private void updatePhone(MouseEvent mouseEvent) {
+    private void updatePhone() {
         phoneField.setVisible(false);
         updatePhoneButton.setVisible(false);
         updatePhoneFiled.setText(profileModel.getPhone());
@@ -116,7 +115,7 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    public void applyName(MouseEvent mouseEvent) {
+    public void applyName() {
         String newName = updateNameFiled.getText();
         profileModel.setName(newName);
         profileService.updateProfileData(profileModel.getUserID(), profileModel);
@@ -129,7 +128,7 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    public void applyUsername(MouseEvent mouseEvent) {
+    public void applyUsername() {
         String newUsername = updateUsernameFiled.getText();
         profileModel.setUsername(newUsername);
         profileService.updateProfileData(profileModel.getUserID(), profileModel);
@@ -142,7 +141,7 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    public void applyPhone(MouseEvent mouseEvent) {
+    public void applyPhone() {
         String newPhone = updatePhoneFiled.getText();
         profileModel.setPhone(newPhone);
         profileService.updateProfileData(profileModel.getUserID(), profileModel);
@@ -156,11 +155,11 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    public void applyNewPassword(MouseEvent mouseEvent) {
+    public void applyNewPassword() {
         String newPassword = updatePasswordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
-        if (newPassword.equals(confirmPassword)){
+        if (newPassword.equals(confirmPassword)) {
             profileModel.setPassword(newPassword);
             profileService.updateProfileData(profileModel.getUserID(), profileModel);
             passwordNotCorrects.setVisible(false);
@@ -172,7 +171,7 @@ public class ProfileController extends BaseController{
     }
 
     @FXML
-    public void applyNewAvatar(MouseEvent mouseEvent) {
+    public void applyNewAvatar() {
         String newAvatar = avatarField.getText();
         loadImage(avatarImage, newAvatar);
         profileModel.setAvatar(newAvatar);

@@ -19,6 +19,7 @@ public class BaseService {
 
 
     private static final ProfileModel profileModel = ProfileModel.getInstance();
+
     static {
         restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -34,25 +35,27 @@ public class BaseService {
 
     public static List<UserRequest> getUsersFromServer() {
         String url = ServerUrls.USERS_URL;
-        ParameterizedTypeReference<List<UserRequest>> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<List<UserRequest>> responseType = new ParameterizedTypeReference<>() {
+        };
 
         ResponseEntity<List<UserRequest>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             List<UserRequest> users = responseEntity.getBody();
-            for (UserRequest user: users) {
+            for (UserRequest user : users) {
                 userMap.put(user.getUserID(), user);
             }
             return users;
         } else {
-            throw new RuntimeException("Failed to retrieve usernames from server. Status code: " + responseEntity.getStatusCodeValue());
+            throw new RuntimeException("Failed to retrieve usernames from server. Status code: " + responseEntity.getStatusCode().value());
         }
     }
 
 
     public static List<PurchasesModel> getPurchasesFromServer() {
         String url = ServerUrls.PURCHASES_URL;
-        ParameterizedTypeReference<List<PurchasesModel>> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<List<PurchasesModel>> responseType = new ParameterizedTypeReference<>() {
+        };
 
         ResponseEntity<List<PurchasesModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
@@ -63,7 +66,7 @@ public class BaseService {
 
                 updatePayments(payments, purchase);
                 Long userID = purchase.getUserID();
-                if (userMap.containsKey(userID)){
+                if (userMap.containsKey(userID)) {
                     purchase.setUsername(userMap.get(userID).getUsername());
                 } else {
                     throw new RuntimeException("User not found for userID: " + userID);
@@ -79,7 +82,8 @@ public class BaseService {
 
     public static List<RequestsModel> getRequestsFromServer() {
         String url = ServerUrls.REQUESTS_URL;
-        ParameterizedTypeReference<List<RequestsModel>> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<List<RequestsModel>> responseType = new ParameterizedTypeReference<>() {
+        };
 
         ResponseEntity<List<RequestsModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
@@ -88,7 +92,7 @@ public class BaseService {
 
             for (RequestsModel request : requests) {
                 Long userID = request.getUserID();
-                if (userMap.containsKey(userID)){
+                if (userMap.containsKey(userID)) {
                     request.setUsername(userMap.get(userID).getUsername());
                 } else {
                     throw new RuntimeException("User not found for userID: " + userID);
@@ -103,7 +107,8 @@ public class BaseService {
 
     public static List<PaymentModel> getPaymentsFromServer() {
         String url = ServerUrls.PAYMENTS_URL;
-        ParameterizedTypeReference<List<PaymentModel>> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<List<PaymentModel>> responseType = new ParameterizedTypeReference<>() {
+        };
 
         ResponseEntity<List<PaymentModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 

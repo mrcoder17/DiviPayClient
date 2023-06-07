@@ -6,13 +6,14 @@ import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
-public class AuthorizationService extends BaseService{
+public class AuthorizationService extends BaseService {
 
     ProfileModel profile = ProfileModel.getInstance();
 
     public void login(String username, String password) {
         UserRequest userRequest = new UserRequest(username, password);
-        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {
+        };
         ResponseEntity<UserRequest> responseEntity = requestToServer(userRequest, ServerUrls.LOGIN_URL, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
@@ -31,9 +32,11 @@ public class AuthorizationService extends BaseService{
             System.err.println("Failed: " + responseEntity.getStatusCode().value());
         }
     }
+
     public void registration(String username, String password) {
         UserRequest user = new UserRequest(username, password);
-        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {
+        };
         ResponseEntity<UserRequest> responseEntity = requestToServer(user, ServerUrls.REGISTRATION_URL, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {

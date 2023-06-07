@@ -1,6 +1,6 @@
 package ru.nsu.boxberger.divipay.model;
 
-public class ProfileModel extends UserRequest{
+public class ProfileModel extends UserRequest {
 
     private static ProfileModel instance;
 
@@ -12,7 +12,7 @@ public class ProfileModel extends UserRequest{
     private String phone;
 
     public static ProfileModel getInstance() {
-        if (instance == null){
+        if (instance == null) {
             instance = new ProfileModel();
         }
         return instance;
@@ -56,11 +56,11 @@ public class ProfileModel extends UserRequest{
         this.password = password;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username){
+    public void setUsername(String username) {
         this.username = username;
     }
 

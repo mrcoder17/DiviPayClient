@@ -16,7 +16,7 @@ import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.PurchasesService;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 
-public class PurchasesController extends BaseController{
+public class PurchasesController extends BaseController {
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final PurchasesService purchasesService;
@@ -63,7 +63,7 @@ public class PurchasesController extends BaseController{
     @FXML
     private Button payingPurchaseButton;
 
-    public PurchasesController (){
+    public PurchasesController() {
         this.purchasesService = new PurchasesService();
     }
 
@@ -105,13 +105,13 @@ public class PurchasesController extends BaseController{
 
 
     @FXML
-    public void applyNewPurchase(MouseEvent mouseEvent) {
+    public void applyNewPurchase() {
         PurchasesModel newPurchase = new PurchasesModel();
         newPurchase.setItemName(checkNameField(newNameField.getText()));
         newPurchase.setPrice(checkDoubleField(newPriceField.getText()));
         newPurchase.setQuantity(checkLongField(newQuantityField.getText()));
 
-        if ((newPurchase.getItemName() != null) && (newPurchase.getPrice() != null)){
+        if ((newPurchase.getItemName() != null) && (newPurchase.getPrice() != null)) {
             newPurchase.setUserID(profileModel.getUserID());
             purchasesService.createPurchase(newPurchase);
             fieldNewPurchasePane.setVisible(false);
@@ -120,14 +120,14 @@ public class PurchasesController extends BaseController{
         }
     }
 
-    public void applyUpdatePurchase(MouseEvent mouseEvent) {
+    public void applyUpdatePurchase() {
         PurchasesModel updatePurchase = new PurchasesModel();
         updatePurchase.setPurchaseID(checkLongField(updateIdField.getText()));
         updatePurchase.setItemName(checkNameField(updateNameField.getText()));
         updatePurchase.setPrice(checkDoubleField(updatePriceField.getText()));
         updatePurchase.setQuantity(checkLongField(updateQuantityField.getText()));
 
-        if ((updatePurchase.getPurchaseID() != null) && (updatePurchase.getItemName() != null) && (updatePurchase.getPrice() != null)){
+        if ((updatePurchase.getPurchaseID() != null) && (updatePurchase.getItemName() != null) && (updatePurchase.getPrice() != null)) {
             updatePurchase.setUserID(profileModel.getUserID());
             purchasesService.updatePurchase(updatePurchase);
             updateFieldsPane.setVisible(false);
@@ -136,11 +136,11 @@ public class PurchasesController extends BaseController{
         }
     }
 
-    public void applyBuyingPurchase(MouseEvent mouseEvent) {
+    public void applyBuyingPurchase() {
         PaymentModel payment = new PaymentModel();
         payment.setPurchaseID(checkLongField(payingIdField.getText()));
 
-        if (payment.getPurchaseID() != null){
+        if (payment.getPurchaseID() != null) {
             payment.setUserID(profileModel.getUserID());
             purchasesService.createPayment(payment);
             payingFieldsPane.setVisible(false);
@@ -149,43 +149,41 @@ public class PurchasesController extends BaseController{
         }
     }
 
-    public void editPurchase(MouseEvent mouseEvent) {
+    public void editPurchase() {
         editPurchaseButton.setVisible(false);
         updateFieldsPane.setVisible(true);
     }
 
-    public void payingPurchase(MouseEvent mouseEvent) {
+    public void payingPurchase() {
         payingPurchaseButton.setVisible(false);
         payingFieldsPane.setVisible(true);
     }
 
-    public void addNewPurchase(MouseEvent mouseEvent) {
+    public void addNewPurchase() {
         addPurchaseButton.setVisible(false);
         fieldNewPurchasePane.setVisible(true);
     }
 
-    public String checkNameField(String field){
-        if (!field.isEmpty()){
+    public String checkNameField(String field) {
+        if (!field.isEmpty()) {
             return field;
         } else {
             return null;
         }
     }
 
-    public Double checkDoubleField(String field){
+    public Double checkDoubleField(String field) {
         try {
-            if (!field.isEmpty())
-                return Double.parseDouble(field);
+            if (!field.isEmpty()) return Double.parseDouble(field);
         } catch (NumberFormatException e) {
             return null;
         }
         return null;
     }
 
-    public Long checkLongField(String field){
+    public Long checkLongField(String field) {
         try {
-            if (!field.isEmpty())
-                return Long.parseLong(field);
+            if (!field.isEmpty()) return Long.parseLong(field);
         } catch (NumberFormatException e) {
             return null;
         }

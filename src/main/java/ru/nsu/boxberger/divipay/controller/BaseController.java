@@ -45,7 +45,7 @@ public class BaseController {
         startDateTimeUpdate();
     }
 
-    void startDateTimeUpdate(){
+    void startDateTimeUpdate() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
             updateTime();
             updateData();
@@ -54,14 +54,14 @@ public class BaseController {
         timeline.play();
     }
 
-    private void updateTime(){
+    private void updateTime() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         String formattedTime = now.format(formatter);
         timeLabel.setText(formattedTime);
     }
 
-    private void updateData(){
+    private void updateData() {
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EE, d MMM");
         String formattedDate = now.format(formatter);
@@ -89,10 +89,10 @@ public class BaseController {
         });
     }
 
-    private List<UserRequest> getUsersFromServer(){
+    private List<UserRequest> getUsersFromServer() {
         try {
             return BaseService.getUsersFromServer();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -119,10 +119,10 @@ public class BaseController {
         });
     }
 
-    private List<RequestsModel> getRequestsFromServer(){
+    private List<RequestsModel> getRequestsFromServer() {
         try {
             return BaseService.getRequestsFromServer();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -143,9 +143,9 @@ public class BaseController {
                     setText(null);
                 } else {
                     setText(purchasesModel.toString());
-                    if (purchasesModel.isPaid() == null){
+                    if (purchasesModel.isPaid() == null) {
                         setStyle("-fx-background-color: #161623");
-                    } else if (purchasesModel.isPaid()){
+                    } else if (purchasesModel.isPaid()) {
                         setStyle("-fx-background-color: #161623; -fx-text-fill: gray");
                     }
                 }
@@ -153,23 +153,23 @@ public class BaseController {
         });
     }
 
-    private List<PurchasesModel> getPurchasesFromServer(){
+    private List<PurchasesModel> getPurchasesFromServer() {
         try {
             return BaseService.getPurchasesFromServer();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    void loadImage(ImageView avatarImage, String url){
+    void loadImage(ImageView avatarImage, String url) {
         Image image = new Image(url);
         avatarImage.setFitHeight(40);
         avatarImage.setFitWidth(40);
         avatarImage.setPreserveRatio(true);
         avatarImage.setImage(image);
 
-        Circle clipCircle = new Circle (20);
+        Circle clipCircle = new Circle(20);
         clipCircle.setCenterX(20);
         clipCircle.setCenterY(20);
 

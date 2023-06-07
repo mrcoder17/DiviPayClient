@@ -10,10 +10,10 @@ public class RequestsModel {
 
     @Override
     public String toString() {
-        return  requestID +
+        return requestID +
                 ". " + itemName +
                 " от " + username +
-                " в кол-ве: " + quantity  + "у.е";
+                " в кол-ве: " + quantity + "у.е";
     }
 
     public String getUsername() {

@@ -8,11 +8,12 @@ import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.model.RequestsModel;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
-public class RequestsService extends BaseService{
+public class RequestsService extends BaseService {
 
     public void createRequest(RequestsModel request) {
         String url = ServerUrls.REQUESTS_URL;
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+        };
         ResponseEntity<PurchasesModel> responseEntity = requestToServer(request, url, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {

@@ -10,11 +10,9 @@ public class PurchasesModel {
     private Long quantity;
     private Double price;
 
-
-
     @Override
     public String toString() {
-        return  purchaseID +
+        return purchaseID +
                 ". '" + itemName +
                 "' от " + username +
                 ", кол-во: " + quantity +

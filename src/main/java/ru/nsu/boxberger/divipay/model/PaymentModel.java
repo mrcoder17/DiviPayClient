@@ -9,16 +9,8 @@ public class PaymentModel {
     @JsonProperty("userID")
     private Long userID;
 
-    @JsonProperty ("purchaseID")
+    @JsonProperty("purchaseID")
     private Long purchaseID;
-
-    public Long getPaymentID() {
-        return paymentID;
-    }
-
-    public void setPaymentID(Long paymentID) {
-        this.paymentID = paymentID;
-    }
 
     public Long getUserID() {
         return userID;

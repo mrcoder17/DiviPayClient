@@ -8,9 +8,11 @@ import ru.nsu.boxberger.divipay.service.AuthorizationService;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 
 
-public class AuthorizationController extends BaseController{
+public class AuthorizationController extends BaseController {
     private final AuthorizationService authorizationService = new AuthorizationService();
-    public AuthorizationController(){}
+
+    public AuthorizationController() {
+    }
 
     @FXML
     private TextField usernameField;

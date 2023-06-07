@@ -9,7 +9,7 @@ import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 
-public class ContactsController extends BaseController{
+public class ContactsController extends BaseController {
     private final ProfileModel profileModel = ProfileModel.getInstance();
 
     @FXML
@@ -32,12 +32,12 @@ public class ContactsController extends BaseController{
             usernameField.setText(profileModel.getUsername());
         } else {
             usernameField.setText(profileModel.getName());
-        }        loadImage(avatarImage, profileModel.getAvatar());
+        }
+        loadImage(avatarImage, profileModel.getAvatar());
 
         loadUsersFromServer(connectedUsers, contactsListView);
         BaseController.getInstance().initializeLabels(dateLabel, timeLabel);
     }
-
 
 
     @FXML

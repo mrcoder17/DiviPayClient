@@ -7,11 +7,12 @@ import ru.nsu.boxberger.divipay.model.PaymentModel;
 import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
-public class PurchasesService extends BaseService{
+public class PurchasesService extends BaseService {
 
-    public void createPurchase(PurchasesModel purchase){
+    public void createPurchase(PurchasesModel purchase) {
         String url = ServerUrls.PURCHASES_URL;
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+        };
         ResponseEntity<PurchasesModel> responseEntity = requestToServer(purchase, url, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
@@ -23,7 +24,8 @@ public class PurchasesService extends BaseService{
 
     public void updatePurchase(PurchasesModel updatePurchase) {
         String url = ServerUrls.PURCHASES_URL + "/" + updatePurchase.getPurchaseID();
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+        };
         ResponseEntity<PurchasesModel> responseEntity = requestToServer(updatePurchase, url, HttpMethod.PUT, responseType);
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Purchase successful updated");
@@ -34,7 +36,8 @@ public class PurchasesService extends BaseService{
 
     public void createPayment(PaymentModel paymentModel) {
         String url = ServerUrls.PAYMENTS_URL;
-        ParameterizedTypeReference<PaymentModel> responseType = new ParameterizedTypeReference<>() {};
+        ParameterizedTypeReference<PaymentModel> responseType = new ParameterizedTypeReference<>() {
+        };
         ResponseEntity<PaymentModel> responseEntity = requestToServer(paymentModel, url, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
