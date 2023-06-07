@@ -92,7 +92,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="10.0" maxHeight="575.0" maxWidth="240.0" prefHeight="530.0" prefWidth="232.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="50.0">
+            <AnchorPane layoutX="10.0" maxHeight="575.0" maxWidth="240.0" prefHeight="530.0" prefWidth="232.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                <children>
                   <ListView fx:id="userListView" editable="true" fixedCellSize="0.0" layoutX="13.0" layoutY="15.0" prefHeight="500.0" prefWidth="214.0" style="-fx-background-color: #161623;" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <opaqueInsets>
@@ -121,7 +121,7 @@
                         </ListView>
                      </children>
                   </AnchorPane>
-                  <Label alignment="CENTER" layoutX="150.0" layoutY="21.0" maxHeight="20.0" text="Список последних покупок" textFill="WHITE" AnchorPane.bottomAnchor="543.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
+                  <Label alignment="CENTER" layoutX="150.0" layoutY="21.0" maxHeight="20.0" text="Список последних покупок" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
                      <font>
                         <Font size="17.0" />
                      </font>

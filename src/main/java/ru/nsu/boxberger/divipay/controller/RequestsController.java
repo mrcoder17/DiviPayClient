@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
+import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.model.RequestsModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.RequestsService;
@@ -19,12 +20,36 @@ public class RequestsController extends BaseController {
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final RequestsService requestsService;
-    public Button addRequestButton;
-    public HBox fieldPane;
-    public TextField nameRequestField;
-    public TextField quantityRequestField;
-    public Label nameErrorLabel;
-    public Label priceErrorLabel;
+
+    @FXML
+    private Button addNewRequestButton;
+
+    @FXML
+    private TextField nameNewRequestField;
+
+    @FXML
+    private TextField quantityNewRequestField;
+
+    @FXML
+    private Label nameErrorLabel;
+
+    @FXML
+    private Label priceErrorLabel;
+
+    @FXML
+    private HBox fieldNewPurchasePane;
+
+    @FXML
+    private HBox updateFieldsPane;
+
+    @FXML
+    private TextField requestIdField;
+
+    @FXML
+    private TextField requestPriceField;
+
+    @FXML
+    private Button createPurchaseButton;
 
     public RequestsController() {
         this.requestsService = new RequestsService();
@@ -62,41 +87,77 @@ public class RequestsController extends BaseController {
     }
 
     @FXML
-    public void applyNewRequest(MouseEvent mouseEvent) {
+    public void applyNewRequest() {
         RequestsModel newRequest = new RequestsModel();
-        fillingNameField(newRequest);
-        fillingQuantityField(newRequest);
+        newRequest.setItemName(checkNameField(nameNewRequestField.getText()));
+        newRequest.setQuantity(checkLongField(quantityNewRequestField.getText()));
+
         if (newRequest.getItemName() != null) {
             newRequest.setUserID(profileModel.getUserID());
             requestsService.createRequest(newRequest);
-            fieldPane.setVisible(false);
-            addRequestButton.setVisible(true);
+            fieldNewPurchasePane.setVisible(false);
+            addNewRequestButton.setVisible(true);
             loadRequestsFromServer(requests, requestsListView);
         }
     }
 
-    public void fillingNameField(RequestsModel Request) {
-        if (!nameRequestField.getText().isEmpty()) {
-            Request.setItemName(nameRequestField.getText());
-            nameErrorLabel.setVisible(false);
-        } else {
-            nameErrorLabel.setVisible(true);
+    public void applyCreatingPurchase(){
+        PurchasesModel newPurchase = new PurchasesModel();
+
+        RequestsModel delRequest = requestsService.getRequestById(checkLongField(requestIdField.getText()));
+
+        newPurchase.setItemName(delRequest.getItemName());
+        newPurchase.setPrice(checkDoubleField(requestPriceField.getText()));
+        newPurchase.setUserID(profileModel.getUserID());
+
+        if ((newPurchase.getItemName() != null) && (newPurchase.getPrice() != null)) {
+            requestsService.deleteRequest(delRequest);
+            requestsService.createPurchaseFromRequest(newPurchase);
+
+            fieldNewPurchasePane.setVisible(false);
+            createPurchaseButton.setVisible(true);
+
+            loadRequestsFromServer(requests, requestsListView);
         }
     }
 
-    public void fillingQuantityField(RequestsModel Request) {
-        try {
-            if (!quantityRequestField.getText().isEmpty())
-                Request.setQuantity(Integer.parseInt(quantityRequestField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+
+    public String checkNameField(String field) {
+        if (!field.isEmpty()) {
+            return field;
+        } else {
+            return null;
         }
+    }
+
+    public Long checkLongField(String field) {
+        try {
+            if (!field.isEmpty()) return Long.parseLong(field);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        return null;
+    }
+
+    public Double checkDoubleField(String field) {
+        try {
+            if (!field.isEmpty()) return Double.parseDouble(field);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        return null;
     }
 
     @FXML
-    public void addNewRequest(MouseEvent mouseEvent) {
-        addRequestButton.setVisible(false);
-        fieldPane.setVisible(true);
+    public void addNewRequest() {
+        addNewRequestButton.setVisible(false);
+        fieldNewPurchasePane.setVisible(true);
+    }
+
+    @FXML
+    public void createPurchaseFromRequest() {
+        createPurchaseButton.setVisible(false);
+        updateFieldsPane.setVisible(true);
     }
 
 

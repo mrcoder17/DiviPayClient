@@ -112,7 +112,7 @@
          <children>
             <AnchorPane layoutX="30.0" layoutY="30.0" maxHeight="580.0" maxWidth="335.0" prefHeight="580.0" prefWidth="335.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
                <children>
-                  <AnchorPane layoutX="9.0" layoutY="54.0" maxHeight="575.0" maxWidth="678.0" prefHeight="461.0" prefWidth="674.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                  <AnchorPane layoutX="9.0" layoutY="54.0" maxHeight="575.0" maxWidth="678.0" prefHeight="461.0" prefWidth="674.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
                      <children>
                         <ListView fx:id="requestsListView" editable="true" fixedCellSize="0.0" layoutX="12.0" layoutY="12.0" prefHeight="436.0" prefWidth="650.0" style="-fx-background-color: #161623;" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="11.0">
                            <opaqueInsets>
@@ -121,26 +121,26 @@
                         </ListView>
                      </children>
                   </AnchorPane>
-                  <Label alignment="CENTER" layoutX="150.0" layoutY="21.0" text="Список актуальных запросов" textFill="WHITE" AnchorPane.bottomAnchor="543.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0">
+                  <Label alignment="CENTER" layoutX="150.0" layoutY="21.0" text="Список актуальных запросов" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <AnchorPane prefHeight="132.0" prefWidth="662.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="500.0">
+                  <AnchorPane prefHeight="132.0" prefWidth="662.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="500.0">
                      <children>
-                        <Button fx:id="addRequestButton" maxHeight="30.0" minHeight="40.0" mnemonicParsing="false" onMouseClicked="#addNewRequest" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Создать запрос на покупку" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                        <Button fx:id="addNewRequestButton" maxHeight="30.0" minHeight="40.0" mnemonicParsing="false" onMouseClicked="#addNewRequest" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Создать новый запрос" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Button>
-                        <HBox fx:id="fieldPane" prefHeight="48.0" prefWidth="608.0" spacing="15.0" visible="false" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+                        <HBox fx:id="fieldNewPurchasePane" prefHeight="48.0" prefWidth="608.0" spacing="15.0" visible="false" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                            <children>
-                              <TextField fx:id="nameRequestField" accessibleRole="SPINNER" alignment="CENTER" prefHeight="35.0" prefWidth="455.0" promptText="Название" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
+                              <TextField fx:id="nameNewRequestField" accessibleRole="SPINNER" alignment="CENTER" prefHeight="35.0" prefWidth="451.0" promptText="Название" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="quantityRequestField" alignment="CENTER" prefHeight="35.0" prefWidth="100.0" promptText="Кол-во" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
+                              <TextField fx:id="quantityNewRequestField" alignment="CENTER" prefHeight="35.0" prefWidth="100.0" promptText="Кол-во" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -154,6 +154,30 @@
                         </HBox>
                         <Label fx:id="nameErrorLabel" layoutX="111.0" layoutY="60.0" text="введите название" visible="false" />
                         <Label fx:id="priceErrorLabel" layoutX="313.0" layoutY="60.0" text="введите корректную цену" visible="false" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="53.0" prefWidth="666.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
+                     <children>
+                        <HBox fx:id="updateFieldsPane" alignment="CENTER" prefHeight="46.0" prefWidth="334.0" spacing="30.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <TextField fx:id="requestIdField" accessibleRole="SPINNER" alignment="CENTER" prefHeight="35.0" prefWidth="60.0" promptText="ID" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="requestPriceField" accessibleRole="SPINNER" alignment="CENTER" prefHeight="35.0" prefWidth="121.0" promptText="Цена" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <Button alignment="BOTTOM_CENTER" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyCreatingPurchase" style="-fx-background-color: #161623;" styleClass="apply-button" textAlignment="RIGHT" />
+                           </children>
+                        </HBox>
+                        <Button fx:id="createPurchaseButton" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onMouseClicked="#createPurchaseFromRequest" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Покупка из запроса" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>

@@ -6,7 +6,7 @@ public class RequestsModel {
     private Long userID;
     private String username;
     private String itemName;
-    private Integer quantity;
+    private Long quantity;
 
     @Override
     public String toString() {
@@ -48,11 +48,11 @@ public class RequestsModel {
         this.itemName = itemName;
     }
 
-    public Integer getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 }
