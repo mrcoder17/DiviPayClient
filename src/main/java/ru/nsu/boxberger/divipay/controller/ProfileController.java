@@ -17,7 +17,7 @@ public class ProfileController extends BaseController{
 
     private final ProfileService profileService;
 
-    private ProfileModel profileModel = ProfileModel.getInstance();
+    private final ProfileModel profileModel = ProfileModel.getInstance();
 
     public ProfileController (){
         this.profileService = new ProfileService();
@@ -70,7 +70,7 @@ public class ProfileController extends BaseController{
     @FXML
     private void initialize() {
         loadProfileData();
-        loadDateTime(dateLabel, timeLabel);
+        BaseController.getInstance().initializeLabels(dateLabel, timeLabel);
     }
 
     private void loadProfileData() {
@@ -170,6 +170,8 @@ public class ProfileController extends BaseController{
             passwordNotCorrects.setVisible(true);
         }
     }
+
+    @FXML
     public void applyNewAvatar(MouseEvent mouseEvent) {
         String newAvatar = avatarField.getText();
         loadImage(avatarImage, newAvatar);

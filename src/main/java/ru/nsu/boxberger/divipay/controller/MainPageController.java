@@ -8,10 +8,11 @@ import javafx.scene.image.ImageView;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.model.RequestsModel;
+import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
-public class MainPageController extends BaseController{
+public class MainPageController extends BaseController {
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
 
@@ -24,12 +25,12 @@ public class MainPageController extends BaseController{
     @FXML
     private Label dateLabel;
 
-    private ObservableList<String> connectedUsers;
+    private ObservableList<UserRequest> connectedUsers;
     private ObservableList<RequestsModel> requests;
     private ObservableList<PurchasesModel> purchases;
 
     @FXML
-    private ListView<String> userListView;
+    private ListView<UserRequest> userListView;
     @FXML
     private ListView<RequestsModel> requestsListView;
     @FXML
@@ -37,18 +38,19 @@ public class MainPageController extends BaseController{
 
     @FXML
     private void initialize() {
+        BaseController.getInstance().initializeLabels(dateLabel, timeLabel);
 
         loadUsersFromServer(connectedUsers, userListView);
         loadPurchasesFromServer(purchases, purchasesListView);
         loadRequestsFromServer(requests, requestsListView);
-        loadDateTime(dateLabel, timeLabel);
         if (profileModel.getName() == null) {
             usernameField.setText(profileModel.getUsername());
         } else {
             usernameField.setText(profileModel.getName());
         }
-        if (profileModel.getAvatar() != null)
+        if (profileModel.getAvatar() != null) {
             loadImage(avatarImage, profileModel.getAvatar());
+        }
     }
 
     @FXML

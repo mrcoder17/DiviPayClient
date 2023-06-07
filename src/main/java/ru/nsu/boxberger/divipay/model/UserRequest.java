@@ -32,9 +32,9 @@ public class UserRequest {
 
     @Override
     public String toString() {
-        return "Пользователь " + username +
-                " с именем " + name +
-                ", телефон для перевода: " + phone;
+        return "Пользователь " + name +
+                ". Nickname " + username +
+                ". Телефон для перевода: " + phone;
     }
 
     public UserRequest() {

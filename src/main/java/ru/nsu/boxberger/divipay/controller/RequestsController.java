@@ -11,12 +11,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.model.RequestsModel;
-import ru.nsu.boxberger.divipay.model.RequestsModel;
+import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.RequestsService;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
-import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
-public class RequestsController extends BaseController{
+public class RequestsController extends BaseController {
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final RequestsService requestsService;
@@ -27,7 +26,7 @@ public class RequestsController extends BaseController{
     public Label nameErrorLabel;
     public Label priceErrorLabel;
 
-    public RequestsController (){
+    public RequestsController() {
         this.requestsService = new RequestsService();
     }
 
@@ -40,11 +39,11 @@ public class RequestsController extends BaseController{
     @FXML
     private Label dateLabel;
 
-    private ObservableList<String> connectedUsers;
+    private ObservableList<UserRequest> connectedUsers;
     private ObservableList<RequestsModel> requests;
 
     @FXML
-    private ListView<String> userListView;
+    private ListView<UserRequest> userListView;
     @FXML
     private ListView<RequestsModel> requestsListView;
 
@@ -59,7 +58,7 @@ public class RequestsController extends BaseController{
 
         loadUsersFromServer(connectedUsers, userListView);
         loadRequestsFromServer(requests, requestsListView);
-        loadDateTime(dateLabel, timeLabel);
+        BaseController.getInstance().initializeLabels(dateLabel, timeLabel);
     }
 
     @FXML
@@ -67,7 +66,7 @@ public class RequestsController extends BaseController{
         RequestsModel newRequest = new RequestsModel();
         fillingNameField(newRequest);
         fillingQuantityField(newRequest);
-        if (newRequest.getItemName() != null){
+        if (newRequest.getItemName() != null) {
             newRequest.setUserID(profileModel.getUserID());
             requestsService.createRequest(newRequest);
             fieldPane.setVisible(false);
@@ -76,8 +75,8 @@ public class RequestsController extends BaseController{
         }
     }
 
-    public void fillingNameField(RequestsModel Request){
-        if (!nameRequestField.getText().isEmpty()){
+    public void fillingNameField(RequestsModel Request) {
+        if (!nameRequestField.getText().isEmpty()) {
             Request.setItemName(nameRequestField.getText());
             nameErrorLabel.setVisible(false);
         } else {
@@ -85,7 +84,7 @@ public class RequestsController extends BaseController{
         }
     }
 
-    public void fillingQuantityField(RequestsModel Request){
+    public void fillingQuantityField(RequestsModel Request) {
         try {
             if (!quantityRequestField.getText().isEmpty())
                 Request.setQuantity(Integer.parseInt(quantityRequestField.getText()));
@@ -99,8 +98,8 @@ public class RequestsController extends BaseController{
         addRequestButton.setVisible(false);
         fieldPane.setVisible(true);
     }
-    
-    
+
+
     @FXML
     private void goToMainPage() {
         goToPage(ResourcesPaths.MAINPAGE_PATH);

@@ -21,58 +21,77 @@ import ru.nsu.boxberger.divipay.model.RequestsModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.BaseService;
 
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseController {
+    private static BaseController instance;
+    private Label dateLabel;
+    private Label timeLabel;
 
-    protected void goToPage(String fxmlFile) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            Stage stage = MainApp.getPrimaryStage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static BaseController getInstance() {
+        if (instance == null) {
+            instance = new BaseController();
         }
+        return instance;
     }
 
-    void loadUsersFromServer(ObservableList<String> connectedUsers, ListView<String> userListView) {
+    public void initializeLabels(Label dateLabel, Label timeLabel) {
+        this.dateLabel = dateLabel;
+        this.timeLabel = timeLabel;
+        startDateTimeUpdate();
+    }
+
+    void startDateTimeUpdate(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
+            updateTime();
+            updateData();
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    private void updateTime(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String formattedTime = now.format(formatter);
+        timeLabel.setText(formattedTime);
+    }
+
+    private void updateData(){
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EE, d MMM");
+        String formattedDate = now.format(formatter);
+        dateLabel.setText(formattedDate);
+    }
+
+    void loadUsersFromServer(ObservableList<UserRequest> connectedUsers, ListView<UserRequest> userListView) {
         connectedUsers = FXCollections.observableArrayList();
         userListView.setItems(connectedUsers);
 
-        List<String> userList = getUsersFromServer();
+        List<UserRequest> userList = getUsersFromServer();
         connectedUsers.addAll(userList);
 
-        userListView.setCellFactory(param -> new ListCell<String>() {
+        userListView.setCellFactory(param -> new ListCell<UserRequest>() {
             @Override
-            protected void updateItem(String username, boolean empty) {
-                super.updateItem(username, empty);
-                if (empty || username == null) {
+            protected void updateItem(UserRequest user, boolean empty) {
+                super.updateItem(user, empty);
+                if (empty || user == null) {
                     setText(null);
                 } else {
-                    setText(username);
+                    setText(user.toString());
                     setStyle("-fx-background-color: #161623");
                 }
             }
         });
     }
 
-    private List<String> getUsersFromServer(){
+    private List<UserRequest> getUsersFromServer(){
         try {
-            List<UserRequest> users = BaseService.getUsersFromServer();
-            List<String> usernames = new ArrayList<>();
-            for (UserRequest user : users){
-                usernames.add(user.getUsername());
-            }
-            return usernames;
+            return BaseService.getUsersFromServer();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -143,29 +162,6 @@ public class BaseController {
         return null;
     }
 
-    void loadDateTime(Label dateLabel, Label timeLabel){
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
-            updateTime(timeLabel);
-            updateData(dateLabel);
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
-
-    private void updateTime(Label timeLabel){
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        String formattedTime = now.format(formatter);
-        timeLabel.setText(formattedTime);
-    }
-
-    private void updateData(Label dateLabel){
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EE, d MMM");
-        String formattedDate = now.format(formatter);
-        dateLabel.setText(formattedDate);
-    }
-
     void loadImage(ImageView avatarImage, String url){
         Image image = new Image(url);
         avatarImage.setFitHeight(40);
@@ -178,5 +174,18 @@ public class BaseController {
         clipCircle.setCenterY(20);
 
         avatarImage.setClip(clipCircle);
+    }
+
+    protected void goToPage(String fxmlFile) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Stage stage = MainApp.getPrimaryStage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

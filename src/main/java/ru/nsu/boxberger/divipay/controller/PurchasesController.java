@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import ru.nsu.boxberger.divipay.model.PaymentModel;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.model.PurchasesModel;
+import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.PurchasesService;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
 
@@ -19,22 +20,48 @@ public class PurchasesController extends BaseController{
 
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final PurchasesService purchasesService;
-    public Button addPurchaseButton;
-    public HBox fieldNewPurchasePane;
-    public TextField newNameField;
-    public TextField newPriceField;
-    public TextField newQuantityField;
-    public HBox updateFieldsPane;
-    public TextField updateIdField;
-    public TextField updateNameField;
-    public TextField updatePriceField;
-    public TextField updateQuantityField;
-    public HBox payingFieldsPane;
-    public TextField payingIdField;
-    public HBox buttonsPane;
-    public Button editPurchaseButton;
-    public Button payingPurchaseButton;
 
+    @FXML
+    private Button addPurchaseButton;
+
+    @FXML
+    private HBox fieldNewPurchasePane;
+
+    @FXML
+    private TextField newNameField;
+
+    @FXML
+    private TextField newPriceField;
+
+    @FXML
+    private TextField newQuantityField;
+
+    @FXML
+    private HBox updateFieldsPane;
+
+    @FXML
+    private TextField updateIdField;
+
+    @FXML
+    private TextField updateNameField;
+
+    @FXML
+    private TextField updatePriceField;
+
+    @FXML
+    private TextField updateQuantityField;
+
+    @FXML
+    private HBox payingFieldsPane;
+
+    @FXML
+    private TextField payingIdField;
+
+    @FXML
+    private Button editPurchaseButton;
+
+    @FXML
+    private Button payingPurchaseButton;
 
     public PurchasesController (){
         this.purchasesService = new PurchasesService();
@@ -49,14 +76,16 @@ public class PurchasesController extends BaseController{
     @FXML
     private Label dateLabel;
 
-    public Label nameErrorLabel;
-    public Label priceErrorLabel;
+    @FXML
+    private Label nameErrorLabel;
+    @FXML
+    private Label priceErrorLabel;
 
-    private ObservableList<String> connectedUsers;
+    private ObservableList<UserRequest> connectedUsers;
     private ObservableList<PurchasesModel> purchases;
 
     @FXML
-    private ListView<String> userListView;
+    private ListView<UserRequest> userListView;
     @FXML
     private ListView<PurchasesModel> purchasesListView;
 
@@ -71,7 +100,7 @@ public class PurchasesController extends BaseController{
 
         loadUsersFromServer(connectedUsers, userListView);
         loadPurchasesFromServer(purchases, purchasesListView);
-        loadDateTime(dateLabel, timeLabel);
+        BaseController.getInstance().initializeLabels(dateLabel, timeLabel);
     }
 
 
