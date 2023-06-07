@@ -12,6 +12,14 @@ public class PaymentModel {
     @JsonProperty("purchaseID")
     private Long purchaseID;
 
+    public Long getPaymentID() {
+        return paymentID;
+    }
+
+    public void setPaymentID(Long paymentID) {
+        this.paymentID = paymentID;
+    }
+
     public Long getUserID() {
         return userID;
     }
