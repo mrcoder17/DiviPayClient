@@ -1,13 +1,12 @@
 .rounded-border {
-    -fx-background-radius: 30; /* Радиус закруглений */
-    -fx-border-radius: 30; /* Радиус закруглений */
-    -fx-background-color: lightgray; /* Цвет фона */
-    -fx-border-color: gray; /* Цвет границы */
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: lightgray;
+    -fx-border-color: gray;
 }
 .rounded-window {
     -fx-background-radius: 30;
     -fx-border-radius: 30;
-    /*-fx-background-color: lightgray;*/
     -fx-border-color: gray;
 }
 .my-rounded {
@@ -33,4 +32,8 @@
 }
 .list-cell {
     -fx-control-inner-background:  #161623;
+}
+.about-description {
+    word-wrap: break-word;
+    text-align: justify;
 }

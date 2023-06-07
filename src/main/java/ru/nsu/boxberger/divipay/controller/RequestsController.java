@@ -50,7 +50,11 @@ public class RequestsController extends BaseController{
 
     @FXML
     private void initialize() {
-        usernameField.setText(profileModel.getUsername());
+        if (profileModel.getName() == null) {
+            usernameField.setText(profileModel.getUsername());
+        } else {
+            usernameField.setText(profileModel.getName());
+        }
         loadImage(avatarImage, profileModel.getAvatar());
 
         loadUsersFromServer(connectedUsers, userListView);

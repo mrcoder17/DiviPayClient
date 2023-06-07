@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import ru.nsu.boxberger.divipay.model.PaymentModel;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
 import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.service.PurchasesService;
@@ -19,7 +20,20 @@ public class PurchasesController extends BaseController{
     private final ProfileModel profileModel = ProfileModel.getInstance();
     private final PurchasesService purchasesService;
     public Button addPurchaseButton;
-    public HBox fieldPane;
+    public HBox fieldNewPurchasePane;
+    public TextField newNameField;
+    public TextField newPriceField;
+    public TextField newQuantityField;
+    public HBox updateFieldsPane;
+    public TextField updateIdField;
+    public TextField updateNameField;
+    public TextField updatePriceField;
+    public TextField updateQuantityField;
+    public HBox payingFieldsPane;
+    public TextField payingIdField;
+    public HBox buttonsPane;
+    public Button editPurchaseButton;
+    public Button payingPurchaseButton;
 
 
     public PurchasesController (){
@@ -34,12 +48,6 @@ public class PurchasesController extends BaseController{
     private Label timeLabel;
     @FXML
     private Label dateLabel;
-    @FXML
-    private TextField nameNewPurchasesField;
-    @FXML
-    private TextField priceNewPurchasesField;
-    @FXML
-    private TextField quantityNewPurchasesField;
 
     public Label nameErrorLabel;
     public Label priceErrorLabel;
@@ -54,7 +62,11 @@ public class PurchasesController extends BaseController{
 
     @FXML
     private void initialize() {
-        usernameField.setText(profileModel.getUsername());
+        if (profileModel.getName() == null) {
+            usernameField.setText(profileModel.getUsername());
+        } else {
+            usernameField.setText(profileModel.getName());
+        }
         loadImage(avatarImage, profileModel.getAvatar());
 
         loadUsersFromServer(connectedUsers, userListView);
@@ -66,51 +78,91 @@ public class PurchasesController extends BaseController{
     @FXML
     public void applyNewPurchase(MouseEvent mouseEvent) {
         PurchasesModel newPurchase = new PurchasesModel();
-        fillingNameField(newPurchase);
-        fillingPriceField(newPurchase);
-        fillingQuantityField(newPurchase);
+        newPurchase.setItemName(checkNameField(newNameField.getText()));
+        newPurchase.setPrice(checkDoubleField(newPriceField.getText()));
+        newPurchase.setQuantity(checkLongField(newQuantityField.getText()));
+
         if ((newPurchase.getItemName() != null) && (newPurchase.getPrice() != null)){
             newPurchase.setUserID(profileModel.getUserID());
             purchasesService.createPurchase(newPurchase);
-            fieldPane.setVisible(false);
+            fieldNewPurchasePane.setVisible(false);
             addPurchaseButton.setVisible(true);
             loadPurchasesFromServer(purchases, purchasesListView);
         }
     }
 
-    public void fillingNameField(PurchasesModel purchase){
-        if (!nameNewPurchasesField.getText().isEmpty()){
-            purchase.setItemName(nameNewPurchasesField.getText());
-            nameErrorLabel.setVisible(false);
-        } else {
-            nameErrorLabel.setVisible(true);
+    public void applyUpdatePurchase(MouseEvent mouseEvent) {
+        PurchasesModel updatePurchase = new PurchasesModel();
+        updatePurchase.setPurchaseID(checkLongField(updateIdField.getText()));
+        updatePurchase.setItemName(checkNameField(updateNameField.getText()));
+        updatePurchase.setPrice(checkDoubleField(updatePriceField.getText()));
+        updatePurchase.setQuantity(checkLongField(updateQuantityField.getText()));
+
+        if ((updatePurchase.getPurchaseID() != null) && (updatePurchase.getItemName() != null) && (updatePurchase.getPrice() != null)){
+            updatePurchase.setUserID(profileModel.getUserID());
+            purchasesService.updatePurchase(updatePurchase);
+            updateFieldsPane.setVisible(false);
+            editPurchaseButton.setVisible(true);
+            loadPurchasesFromServer(purchases, purchasesListView);
         }
     }
 
-    public void fillingPriceField(PurchasesModel purchase){
-        try {
-            if (!priceNewPurchasesField.getText().isEmpty())
-                purchase.setPrice(Double.parseDouble(priceNewPurchasesField.getText()));
-            nameErrorLabel.setVisible(false);
-        } catch (NumberFormatException e) {
-            priceErrorLabel.setVisible(true);
+    public void applyBuyingPurchase(MouseEvent mouseEvent) {
+        PaymentModel payment = new PaymentModel();
+        payment.setPurchaseID(checkLongField(payingIdField.getText()));
+
+        if (payment.getPurchaseID() != null){
+            payment.setUserID(profileModel.getUserID());
+            purchasesService.createPayment(payment);
+            payingFieldsPane.setVisible(false);
+            payingPurchaseButton.setVisible(true);
+            loadPurchasesFromServer(purchases, purchasesListView);
         }
     }
 
-    public void fillingQuantityField(PurchasesModel purchase){
-        try {
-            if (!quantityNewPurchasesField.getText().isEmpty())
-                purchase.setQuantity(Integer.parseInt(quantityNewPurchasesField.getText()));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+    public void editPurchase(MouseEvent mouseEvent) {
+        editPurchaseButton.setVisible(false);
+        updateFieldsPane.setVisible(true);
     }
 
-    @FXML
+    public void payingPurchase(MouseEvent mouseEvent) {
+        payingPurchaseButton.setVisible(false);
+        payingFieldsPane.setVisible(true);
+    }
+
     public void addNewPurchase(MouseEvent mouseEvent) {
         addPurchaseButton.setVisible(false);
-        fieldPane.setVisible(true);
+        fieldNewPurchasePane.setVisible(true);
     }
+
+    public String checkNameField(String field){
+        if (!field.isEmpty()){
+            return field;
+        } else {
+            return null;
+        }
+    }
+
+    public Double checkDoubleField(String field){
+        try {
+            if (!field.isEmpty())
+                return Double.parseDouble(field);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        return null;
+    }
+
+    public Long checkLongField(String field){
+        try {
+            if (!field.isEmpty())
+                return Long.parseLong(field);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        return null;
+    }
+
 
     @FXML
     private void goToMainPage() {

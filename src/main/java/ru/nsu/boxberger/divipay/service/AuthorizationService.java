@@ -26,6 +26,7 @@ public class AuthorizationService extends BaseService{
 
             if (user.getName() != null) profile.setName(user.getName());
             if (user.getPhone() != null) profile.setPhone(user.getPhone());
+            if (user.getDebt() != null) profile.setDebt(user.getDebt());
         } else {
             System.err.println("Failed: " + responseEntity.getStatusCode().value());
         }

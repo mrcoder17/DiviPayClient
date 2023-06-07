@@ -77,8 +77,7 @@ public class ProfileController extends BaseController{
         nameField.setText(profileModel.getName());
         phoneField.setText(profileModel.getPhone());
         usernameField.setText(profileModel.getUsername());
-        if (profileModel.getAvatar() != null)
-            loadImage(avatarImage, profileModel.getAvatar());
+        loadImage(avatarImage, profileModel.getAvatar());
     }
 
     public void loadImage (ImageView avatarImage, String url){

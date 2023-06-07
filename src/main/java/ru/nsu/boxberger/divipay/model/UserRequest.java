@@ -7,6 +7,9 @@ public class UserRequest {
     @JsonProperty ("userID")
     private Long userID;
 
+    @JsonProperty ("debt")
+    private Double debt;
+
     @JsonProperty("name")
     private String name;
 
@@ -25,6 +28,13 @@ public class UserRequest {
     public UserRequest (String username, String password){
         this.username = username;
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Пользователь " + username +
+                " с именем " + name +
+                ", телефон для перевода: " + phone;
     }
 
     public UserRequest() {
@@ -79,4 +89,11 @@ public class UserRequest {
         this.username = username;
     }
 
+    public Double getDebt() {
+        return debt;
+    }
+
+    public void setDebt(Double debt) {
+        this.debt = debt;
+    }
 }

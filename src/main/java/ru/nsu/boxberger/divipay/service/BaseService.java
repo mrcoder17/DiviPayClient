@@ -5,16 +5,20 @@ import org.springframework.http.*;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-import ru.nsu.boxberger.divipay.model.PurchasesModel;
-import ru.nsu.boxberger.divipay.model.RequestsModel;
-import ru.nsu.boxberger.divipay.model.UserRequest;
+import ru.nsu.boxberger.divipay.model.*;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
 import java.util.*;
 
 public class BaseService {
     private static final RestTemplate restTemplate;
-    private static Map<Long, UserRequest> userMap = new HashMap<>();
+    private static final Map<Long, UserRequest> userMap = new HashMap<>();
+    private static final Map<Long, PurchasesModel> purchaseMap = new HashMap<>();
+    private static final Map<Long, RequestsModel> requestMap = new HashMap<>();
+    private static final Map<Long, PaymentModel> paymentMap = new HashMap<>();
+
+
+    private static final ProfileModel profileModel = ProfileModel.getInstance();
     static {
         restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -54,19 +58,22 @@ public class BaseService {
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             List<PurchasesModel> purchases = responseEntity.getBody();
-
+            List<PaymentModel> payments = getPaymentsFromServer();
             for (PurchasesModel purchase : purchases) {
+
+                updatePayments(payments, purchase);
                 Long userID = purchase.getUserID();
                 if (userMap.containsKey(userID)){
-                    UserRequest user = userMap.get(userID);
-                    purchase.setUsername(user.getUsername());
+                    purchase.setUsername(userMap.get(userID).getUsername());
                 } else {
                     throw new RuntimeException("User not found for userID: " + userID);
                 }
+
+                purchaseMap.put(purchase.getPurchaseID(), purchase);
             }
             return purchases;
         } else {
-            throw new RuntimeException("Failed to retrieve purchases from server. Status code: " + responseEntity.getStatusCodeValue());
+            return Collections.emptyList();
         }
     }
 
@@ -78,31 +85,44 @@ public class BaseService {
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             List<RequestsModel> requests = responseEntity.getBody();
+
             for (RequestsModel request : requests) {
                 Long userID = request.getUserID();
                 if (userMap.containsKey(userID)){
-                    UserRequest user = userMap.get(userID);
-                    request.setUsername(user.getUsername());
+                    request.setUsername(userMap.get(userID).getUsername());
                 } else {
                     throw new RuntimeException("User not found for userID: " + userID);
                 }
+                requestMap.put(request.getRequestID(), request);
             }
             return requests;
         } else {
-            throw new RuntimeException("Failed to retrieve requests from server. Status code: " + responseEntity.getStatusCodeValue());
+            return Collections.emptyList();
         }
     }
 
-    public static UserRequest getUserFromServer(Long id) {
-        String url = ServerUrls.USERS_URL + "/" + id;
-        ParameterizedTypeReference<UserRequest> responseType = new ParameterizedTypeReference<>() {};
+    public static List<PaymentModel> getPaymentsFromServer() {
+        String url = ServerUrls.PAYMENTS_URL;
+        ParameterizedTypeReference<List<PaymentModel>> responseType = new ParameterizedTypeReference<>() {};
 
-        ResponseEntity<UserRequest> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
+        ResponseEntity<List<PaymentModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseEntity.getBody();
+            List<PaymentModel> payments = responseEntity.getBody();
+            for (PaymentModel payment : payments) {
+                paymentMap.put(payment.getPurchaseID(), payment);
+            }
+            return payments;
         } else {
-            throw new RuntimeException("Failed to retrieve user from server. Status code: " + responseEntity.getStatusCodeValue());
+            return Collections.emptyList();
+        }
+    }
+
+    public static void updatePayments(List<PaymentModel> payments, PurchasesModel purchase) {
+        for (PaymentModel payment : payments) {
+            if (payment.getUserID().equals(profileModel.getUserID()) && payment.getPurchaseID().equals(purchase.getPurchaseID())) {
+                purchase.setPaid(true);
+            }
         }
     }
 }

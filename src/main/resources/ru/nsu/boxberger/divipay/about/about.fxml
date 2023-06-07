@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -50,13 +51,45 @@
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane maxWidth="1030.0" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #1d1e29;" BorderPane.alignment="CENTER_RIGHT" />
+      <AnchorPane maxHeight="50.0" maxWidth="970.0" minHeight="50.0" minWidth="970.0" prefHeight="50.0" prefWidth="970.0" style="-fx-background-color: #161623;" styleClass="rounded-window" stylesheets="@../styles/styles.css" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <Label fx:id="usernameField" alignment="CENTER_RIGHT" layoutX="410.0" layoutY="13.0" maxHeight="25.0" maxWidth="250.0" prefHeight="30.0" prefWidth="250.0" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <ImageView fx:id="avatarImage" fitHeight="40.0" fitWidth="40.0" layoutX="655.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="timeLabel" layoutX="450.0" layoutY="13.0" maxHeight="25.0" prefHeight="25.0" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="20.0" layoutY="13.0" maxHeight="25.0" prefHeight="25.0" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets right="30.0" top="30.0" />
+         </BorderPane.margin>
+      </AnchorPane>
    </top>
    <center>
-      <Label fx:id="descriptionLabel" prefHeight="640.0" prefWidth="1000.0" text="${controller.description}" textAlignment="JUSTIFY" textFill="#ffeded" wrapText="true" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="rounded-window" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="descriptionLabel" prefHeight="640.0" prefWidth="1000.0" styleClass="about-description" text="${controller.description}" textAlignment="JUSTIFY" textFill="#fce6e6" wrapText="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </BorderPane.margin>
+      </AnchorPane>
    </center>
 </BorderPane>

@@ -2,11 +2,12 @@ package ru.nsu.boxberger.divipay.model;
 
 public class PurchasesModel {
 
+    private Boolean isPaid;
     private Long purchaseID;
     private Long userID;
     private String username;
     private String itemName;
-    private Integer quantity;
+    private Long quantity;
     private Double price;
 
 
@@ -17,7 +18,7 @@ public class PurchasesModel {
                 ". '" + itemName +
                 "' от " + username +
                 ", кол-во: " + quantity +
-                ", цена за шт: " + price + " Руб.";
+                ", общая цена: " + price + " Руб.";
     }
 
     public String getUsername() {
@@ -44,11 +45,11 @@ public class PurchasesModel {
         this.itemName = itemName;
     }
 
-    public Integer getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 
@@ -66,5 +67,13 @@ public class PurchasesModel {
 
     public void setUserID(Long userID) {
         this.userID = userID;
+    }
+
+    public Boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(Boolean paid) {
+        isPaid = paid;
     }
 }

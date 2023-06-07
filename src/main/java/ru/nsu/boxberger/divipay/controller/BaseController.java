@@ -20,7 +20,7 @@ import ru.nsu.boxberger.divipay.model.PurchasesModel;
 import ru.nsu.boxberger.divipay.model.RequestsModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.BaseService;
-import ru.nsu.boxberger.divipay.utils.ServerUrls;
+
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -124,7 +124,11 @@ public class BaseController {
                     setText(null);
                 } else {
                     setText(purchasesModel.toString());
-                    setStyle("-fx-background-color: #161623");
+                    if (purchasesModel.isPaid() == null){
+                        setStyle("-fx-background-color: #161623");
+                    } else if (purchasesModel.isPaid()){
+                        setStyle("-fx-background-color: #161623; -fx-text-fill: gray");
+                    }
                 }
             }
         });

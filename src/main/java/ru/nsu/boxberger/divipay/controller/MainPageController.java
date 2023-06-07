@@ -42,8 +42,11 @@ public class MainPageController extends BaseController{
         loadPurchasesFromServer(purchases, purchasesListView);
         loadRequestsFromServer(requests, requestsListView);
         loadDateTime(dateLabel, timeLabel);
-
-        usernameField.setText(profileModel.getUsername());
+        if (profileModel.getName() == null) {
+            usernameField.setText(profileModel.getUsername());
+        } else {
+            usernameField.setText(profileModel.getName());
+        }
         if (profileModel.getAvatar() != null)
             loadImage(avatarImage, profileModel.getAvatar());
     }
