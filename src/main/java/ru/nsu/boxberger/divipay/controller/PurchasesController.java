@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import ru.nsu.boxberger.divipay.model.PaymentModel;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
-import ru.nsu.boxberger.divipay.model.PurchasesModel;
+import ru.nsu.boxberger.divipay.model.PurchaseModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.PurchasesService;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
@@ -82,12 +81,12 @@ public class PurchasesController extends BaseController {
     private Label priceErrorLabel;
 
     private ObservableList<UserRequest> connectedUsers;
-    private ObservableList<PurchasesModel> purchases;
+    private ObservableList<PurchaseModel> purchases;
 
     @FXML
     private ListView<UserRequest> userListView;
     @FXML
-    private ListView<PurchasesModel> purchasesListView;
+    private ListView<PurchaseModel> purchasesListView;
 
     @FXML
     private void initialize() {
@@ -106,7 +105,7 @@ public class PurchasesController extends BaseController {
 
     @FXML
     public void applyNewPurchase() {
-        PurchasesModel newPurchase = new PurchasesModel();
+        PurchaseModel newPurchase = new PurchaseModel();
         newPurchase.setItemName(checkNameField(newNameField.getText()));
         newPurchase.setPrice(checkDoubleField(newPriceField.getText()));
         newPurchase.setQuantity(checkLongField(newQuantityField.getText()));
@@ -121,7 +120,7 @@ public class PurchasesController extends BaseController {
     }
 
     public void applyUpdatePurchase() {
-        PurchasesModel updatePurchase = new PurchasesModel();
+        PurchaseModel updatePurchase = new PurchaseModel();
         updatePurchase.setPurchaseID(checkLongField(updateIdField.getText()));
         updatePurchase.setItemName(checkNameField(updateNameField.getText()));
         updatePurchase.setPrice(checkDoubleField(updatePriceField.getText()));

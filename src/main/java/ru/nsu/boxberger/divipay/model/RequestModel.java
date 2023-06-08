@@ -1,6 +1,6 @@
 package ru.nsu.boxberger.divipay.model;
 
-public class RequestsModel {
+public class RequestModel {
 
     private Long requestID;
     private Long userID;

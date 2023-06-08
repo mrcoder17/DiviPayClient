@@ -1,6 +1,6 @@
 package ru.nsu.boxberger.divipay.model;
 
-public class PurchasesModel {
+public class PurchaseModel {
 
     private Boolean isPaid;
     private Long purchaseID;

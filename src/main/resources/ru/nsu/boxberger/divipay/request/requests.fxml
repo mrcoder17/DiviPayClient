@@ -158,7 +158,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="53.0" prefWidth="666.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
                      <children>
-                        <HBox fx:id="updateFieldsPane" alignment="CENTER" prefHeight="46.0" prefWidth="334.0" spacing="30.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+                        <HBox fx:id="updateFieldsPane" alignment="CENTER" prefHeight="46.0" prefWidth="334.0" spacing="30.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                            <children>
                               <TextField fx:id="requestIdField" accessibleRole="SPINNER" alignment="CENTER" prefHeight="35.0" prefWidth="60.0" promptText="ID" style="-fx-background-color: #221f2f;" styleClass="my-rounded">
                                  <font>
@@ -173,7 +173,7 @@
                               <Button alignment="BOTTOM_CENTER" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#applyCreatingPurchase" style="-fx-background-color: #161623;" styleClass="apply-button" textAlignment="RIGHT" />
                            </children>
                         </HBox>
-                        <Button fx:id="createPurchaseButton" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onMouseClicked="#createPurchaseFromRequest" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Покупка из запроса" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                        <Button fx:id="createPurchaseButton" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onMouseClicked="#createPurchaseFromRequest" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #221f2f;" styleClass="my-rounded" text="Покупка из запроса" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                            <font>
                               <Font size="17.0" />
                            </font>

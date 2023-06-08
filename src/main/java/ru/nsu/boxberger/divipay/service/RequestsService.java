@@ -4,17 +4,17 @@ package ru.nsu.boxberger.divipay.service;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import ru.nsu.boxberger.divipay.model.PurchasesModel;
-import ru.nsu.boxberger.divipay.model.RequestsModel;
+import ru.nsu.boxberger.divipay.model.PurchaseModel;
+import ru.nsu.boxberger.divipay.model.RequestModel;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
 public class RequestsService extends BaseService {
 
-    public void createRequest(RequestsModel request) {
+    public void createRequest(RequestModel request) {
         String url = ServerUrls.REQUESTS_URL;
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<RequestModel> responseType = new ParameterizedTypeReference<>() {
         };
-        ResponseEntity<PurchasesModel> responseEntity = requestToServer(request, url, HttpMethod.POST, responseType);
+        ResponseEntity<RequestModel> responseEntity = requestToServer(request, url, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Request successful created");
@@ -23,11 +23,11 @@ public class RequestsService extends BaseService {
         }
     }
 
-    public void deleteRequest(RequestsModel request) {
-        String url = ServerUrls.REQUESTS_URL;
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+    public void deleteRequest(RequestModel request) {
+        String url = ServerUrls.REQUESTS_URL + "/" + request.getRequestID();
+        ParameterizedTypeReference<RequestModel> responseType = new ParameterizedTypeReference<>() {
         };
-        ResponseEntity<PurchasesModel> responseEntity = requestToServer(request, url, HttpMethod.DELETE, responseType);
+        ResponseEntity<RequestModel> responseEntity = requestToServer(request, url, HttpMethod.DELETE, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Request successful deleted");
@@ -36,11 +36,11 @@ public class RequestsService extends BaseService {
         }
     }
 
-    public void createPurchaseFromRequest (PurchasesModel purchase){
+    public void createPurchaseFromRequest (PurchaseModel purchase){
         String url = ServerUrls.PURCHASES_URL;
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<PurchaseModel> responseType = new ParameterizedTypeReference<>() {
         };
-        ResponseEntity<PurchasesModel> responseEntity = requestToServer(purchase, url, HttpMethod.POST, responseType);
+        ResponseEntity<PurchaseModel> responseEntity = requestToServer(purchase, url, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Purchase successful created");
@@ -48,11 +48,11 @@ public class RequestsService extends BaseService {
             System.err.println("Failed: " + responseEntity.getStatusCode().value());
         }
     }
-    public RequestsModel getRequestById (Long id){
+    public RequestModel getRequestById (Long id){
         String url = ServerUrls.REQUESTS_URL + "/" + id;
-        ParameterizedTypeReference<RequestsModel> responseType = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<RequestModel> responseType = new ParameterizedTypeReference<>() {
         };
-        ResponseEntity<RequestsModel> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
+        ResponseEntity<RequestModel> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Request successful created");

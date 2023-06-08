@@ -16,8 +16,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import ru.nsu.boxberger.divipay.MainApp;
-import ru.nsu.boxberger.divipay.model.PurchasesModel;
-import ru.nsu.boxberger.divipay.model.RequestsModel;
+import ru.nsu.boxberger.divipay.model.PurchaseModel;
+import ru.nsu.boxberger.divipay.model.RequestModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.BaseService;
 
@@ -98,28 +98,28 @@ public class BaseController {
         return null;
     }
 
-    void loadRequestsFromServer(ObservableList<RequestsModel> requests, ListView<RequestsModel> requestsListView) {
+    void loadRequestsFromServer(ObservableList<RequestModel> requests, ListView<RequestModel> requestsListView) {
         requests = FXCollections.observableArrayList();
         requestsListView.setItems(requests);
 
-        List<RequestsModel> requestList = getRequestsFromServer();
+        List<RequestModel> requestList = getRequestsFromServer();
         requests.addAll(requestList);
 
-        requestsListView.setCellFactory(param -> new ListCell<RequestsModel>() {
+        requestsListView.setCellFactory(param -> new ListCell<RequestModel>() {
             @Override
-            protected void updateItem(RequestsModel requestsModel, boolean empty) {
-                super.updateItem(requestsModel, empty);
-                if (empty || requestsModel == null) {
+            protected void updateItem(RequestModel requestModel, boolean empty) {
+                super.updateItem(requestModel, empty);
+                if (empty || requestModel == null) {
                     setText(null);
                 } else {
-                    setText(requestsModel.toString());
+                    setText(requestModel.toString());
                     setStyle("-fx-background-color: #161623");
                 }
             }
         });
     }
 
-    private List<RequestsModel> getRequestsFromServer() {
+    private List<RequestModel> getRequestsFromServer() {
         try {
             return BaseService.getRequestsFromServer();
         } catch (Exception e) {
@@ -128,24 +128,24 @@ public class BaseController {
         return null;
     }
 
-    void loadPurchasesFromServer(ObservableList<PurchasesModel> purchases, ListView<PurchasesModel> purchasesListView) {
+    void loadPurchasesFromServer(ObservableList<PurchaseModel> purchases, ListView<PurchaseModel> purchasesListView) {
         purchases = FXCollections.observableArrayList();
         purchasesListView.setItems(purchases);
 
-        List<PurchasesModel> purchasesList = getPurchasesFromServer();
+        List<PurchaseModel> purchasesList = getPurchasesFromServer();
         purchases.addAll(purchasesList);
 
-        purchasesListView.setCellFactory(param -> new ListCell<PurchasesModel>() {
+        purchasesListView.setCellFactory(param -> new ListCell<PurchaseModel>() {
             @Override
-            protected void updateItem(PurchasesModel purchasesModel, boolean empty) {
-                super.updateItem(purchasesModel, empty);
-                if (empty || purchasesModel == null) {
+            protected void updateItem(PurchaseModel purchaseModel, boolean empty) {
+                super.updateItem(purchaseModel, empty);
+                if (empty || purchaseModel == null) {
                     setText(null);
                 } else {
-                    setText(purchasesModel.toString());
-                    if (purchasesModel.isPaid() == null) {
+                    setText(purchaseModel.toString());
+                    if (purchaseModel.isPaid() == null) {
                         setStyle("-fx-background-color: #161623");
-                    } else if (purchasesModel.isPaid()) {
+                    } else if (purchaseModel.isPaid()) {
                         setStyle("-fx-background-color: #161623; -fx-text-fill: gray");
                     }
                 }
@@ -153,7 +153,7 @@ public class BaseController {
         });
     }
 
-    private List<PurchasesModel> getPurchasesFromServer() {
+    private List<PurchaseModel> getPurchasesFromServer() {
         try {
             return BaseService.getPurchasesFromServer();
         } catch (Exception e) {

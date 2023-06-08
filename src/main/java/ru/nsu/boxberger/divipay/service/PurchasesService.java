@@ -4,16 +4,16 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import ru.nsu.boxberger.divipay.model.PaymentModel;
-import ru.nsu.boxberger.divipay.model.PurchasesModel;
+import ru.nsu.boxberger.divipay.model.PurchaseModel;
 import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
 public class PurchasesService extends BaseService {
 
-    public void createPurchase(PurchasesModel purchase) {
+    public void createPurchase(PurchaseModel purchase) {
         String url = ServerUrls.PURCHASES_URL;
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<PurchaseModel> responseType = new ParameterizedTypeReference<>() {
         };
-        ResponseEntity<PurchasesModel> responseEntity = requestToServer(purchase, url, HttpMethod.POST, responseType);
+        ResponseEntity<PurchaseModel> responseEntity = requestToServer(purchase, url, HttpMethod.POST, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Purchase successful created");
@@ -22,11 +22,11 @@ public class PurchasesService extends BaseService {
         }
     }
 
-    public void updatePurchase(PurchasesModel updatePurchase) {
+    public void updatePurchase(PurchaseModel updatePurchase) {
         String url = ServerUrls.PURCHASES_URL + "/" + updatePurchase.getPurchaseID();
-        ParameterizedTypeReference<PurchasesModel> responseType = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<PurchaseModel> responseType = new ParameterizedTypeReference<>() {
         };
-        ResponseEntity<PurchasesModel> responseEntity = requestToServer(updatePurchase, url, HttpMethod.PUT, responseType);
+        ResponseEntity<PurchaseModel> responseEntity = requestToServer(updatePurchase, url, HttpMethod.PUT, responseType);
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             System.out.println("Purchase successful updated");
         } else {

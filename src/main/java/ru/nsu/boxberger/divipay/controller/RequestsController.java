@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
-import ru.nsu.boxberger.divipay.model.PurchasesModel;
-import ru.nsu.boxberger.divipay.model.RequestsModel;
+import ru.nsu.boxberger.divipay.model.PurchaseModel;
+import ru.nsu.boxberger.divipay.model.RequestModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.service.RequestsService;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
@@ -65,12 +64,12 @@ public class RequestsController extends BaseController {
     private Label dateLabel;
 
     private ObservableList<UserRequest> connectedUsers;
-    private ObservableList<RequestsModel> requests;
+    private ObservableList<RequestModel> requests;
 
     @FXML
     private ListView<UserRequest> userListView;
     @FXML
-    private ListView<RequestsModel> requestsListView;
+    private ListView<RequestModel> requestsListView;
 
     @FXML
     private void initialize() {
@@ -88,7 +87,7 @@ public class RequestsController extends BaseController {
 
     @FXML
     public void applyNewRequest() {
-        RequestsModel newRequest = new RequestsModel();
+        RequestModel newRequest = new RequestModel();
         newRequest.setItemName(checkNameField(nameNewRequestField.getText()));
         newRequest.setQuantity(checkLongField(quantityNewRequestField.getText()));
 
@@ -102,15 +101,16 @@ public class RequestsController extends BaseController {
     }
 
     public void applyCreatingPurchase(){
-        PurchasesModel newPurchase = new PurchasesModel();
+        PurchaseModel newPurchase = new PurchaseModel();
 
-        RequestsModel delRequest = requestsService.getRequestById(checkLongField(requestIdField.getText()));
+        RequestModel delRequest = requestsService.getRequestById(checkLongField(requestIdField.getText()));
 
         newPurchase.setItemName(delRequest.getItemName());
         newPurchase.setPrice(checkDoubleField(requestPriceField.getText()));
         newPurchase.setUserID(profileModel.getUserID());
+        newPurchase.setQuantity(delRequest.getQuantity());
 
-        if ((newPurchase.getItemName() != null) && (newPurchase.getPrice() != null)) {
+        if ((newPurchase.getItemName() != null) && (newPurchase.getPrice() != null) && (newPurchase.getUserID() != null)) {
             requestsService.deleteRequest(delRequest);
             requestsService.createPurchaseFromRequest(newPurchase);
 

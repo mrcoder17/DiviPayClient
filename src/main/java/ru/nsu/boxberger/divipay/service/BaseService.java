@@ -13,8 +13,8 @@ import java.util.*;
 public class BaseService {
     private static final RestTemplate restTemplate;
     private static final Map<Long, UserRequest> userMap = new HashMap<>();
-    private static final Map<Long, PurchasesModel> purchaseMap = new HashMap<>();
-    private static final Map<Long, RequestsModel> requestMap = new HashMap<>();
+    private static final Map<Long, PurchaseModel> purchaseMap = new HashMap<>();
+    private static final Map<Long, RequestModel> requestMap = new HashMap<>();
     private static final Map<Long, PaymentModel> paymentMap = new HashMap<>();
 
 
@@ -52,17 +52,17 @@ public class BaseService {
     }
 
 
-    public static List<PurchasesModel> getPurchasesFromServer() {
+    public static List<PurchaseModel> getPurchasesFromServer() {
         String url = ServerUrls.PURCHASES_URL;
-        ParameterizedTypeReference<List<PurchasesModel>> responseType = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<List<PurchaseModel>> responseType = new ParameterizedTypeReference<>() {
         };
 
-        ResponseEntity<List<PurchasesModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
+        ResponseEntity<List<PurchaseModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            List<PurchasesModel> purchases = responseEntity.getBody();
+            List<PurchaseModel> purchases = responseEntity.getBody();
             List<PaymentModel> payments = getPaymentsFromServer();
-            for (PurchasesModel purchase : purchases) {
+            for (PurchaseModel purchase : purchases) {
 
                 updatePayments(payments, purchase);
                 Long userID = purchase.getUserID();
@@ -80,17 +80,17 @@ public class BaseService {
         }
     }
 
-    public static List<RequestsModel> getRequestsFromServer() {
+    public static List<RequestModel> getRequestsFromServer() {
         String url = ServerUrls.REQUESTS_URL;
-        ParameterizedTypeReference<List<RequestsModel>> responseType = new ParameterizedTypeReference<>() {
+        ParameterizedTypeReference<List<RequestModel>> responseType = new ParameterizedTypeReference<>() {
         };
 
-        ResponseEntity<List<RequestsModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
+        ResponseEntity<List<RequestModel>> responseEntity = requestToServer(null, url, HttpMethod.GET, responseType);
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            List<RequestsModel> requests = responseEntity.getBody();
+            List<RequestModel> requests = responseEntity.getBody();
 
-            for (RequestsModel request : requests) {
+            for (RequestModel request : requests) {
                 Long userID = request.getUserID();
                 if (userMap.containsKey(userID)) {
                     request.setUsername(userMap.get(userID).getUsername());
@@ -123,7 +123,7 @@ public class BaseService {
         }
     }
 
-    public static void updatePayments(List<PaymentModel> payments, PurchasesModel purchase) {
+    public static void updatePayments(List<PaymentModel> payments, PurchaseModel purchase) {
         for (PaymentModel payment : payments) {
             if (payment.getUserID().equals(profileModel.getUserID()) && payment.getPurchaseID().equals(purchase.getPurchaseID())) {
                 purchase.setPaid(true);

@@ -6,11 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import ru.nsu.boxberger.divipay.model.ProfileModel;
-import ru.nsu.boxberger.divipay.model.PurchasesModel;
-import ru.nsu.boxberger.divipay.model.RequestsModel;
+import ru.nsu.boxberger.divipay.model.PurchaseModel;
+import ru.nsu.boxberger.divipay.model.RequestModel;
 import ru.nsu.boxberger.divipay.model.UserRequest;
 import ru.nsu.boxberger.divipay.utils.ResourcesPaths;
-import ru.nsu.boxberger.divipay.utils.ServerUrls;
 
 public class MainPageController extends BaseController {
 
@@ -26,15 +25,15 @@ public class MainPageController extends BaseController {
     private Label dateLabel;
 
     private ObservableList<UserRequest> connectedUsers;
-    private ObservableList<RequestsModel> requests;
-    private ObservableList<PurchasesModel> purchases;
+    private ObservableList<RequestModel> requests;
+    private ObservableList<PurchaseModel> purchases;
 
     @FXML
     private ListView<UserRequest> userListView;
     @FXML
-    private ListView<RequestsModel> requestsListView;
+    private ListView<RequestModel> requestsListView;
     @FXML
-    private ListView<PurchasesModel> purchasesListView;
+    private ListView<PurchaseModel> purchasesListView;
 
     @FXML
     private void initialize() {
