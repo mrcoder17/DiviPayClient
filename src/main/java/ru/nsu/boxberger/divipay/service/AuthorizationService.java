@@ -45,6 +45,7 @@ public class AuthorizationService extends BaseService {
             profile.setUserID(user.getUserID());
             profile.setUsername(username);
             profile.setPassword(password);
+            profile.setAvatar(user.getAvatar());
         } else {
             System.err.println("Failed: " + responseEntity.getStatusCode().value());
         }
